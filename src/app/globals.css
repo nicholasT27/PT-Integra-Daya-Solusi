@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Brand colours (blue theme) and fonts used across the whole site. */
+@theme inline {
+  --color-navy-950: #061631;
+  --color-navy-900: #0a2550;
+  --color-navy-800: #0f3270;
+  --color-navy-700: #164092;
+  --color-navy-600: #1d52b8;
+  --color-navy-500: #2f6fe0;
+  --color-sky-300: #9cc0f5;
+  --color-ice-100: #e4edfb;
+  --color-ice-50: #f3f7fd;
+  --color-ink: #12203a;
+  --color-muted: #55627a;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Soft grid pattern used on dark blue banners. */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
