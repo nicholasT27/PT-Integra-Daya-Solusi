@@ -194,3 +194,59 @@ export const navLinks = [
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact Us" },
 ];
+
+// ---------------------------------------------------------------------------
+// SAMPLE CONTENT: everything below is made-up placeholder text for the client demo.
+// Replace it with real details (history, people, projects, quotes, vacancies) when the client provides them.
+// ---------------------------------------------------------------------------
+
+export const history = [
+  { year: "2010", title: "Founded in Jakarta", text: "Started as a small team of risk surveyors helping local businesses understand their insurance exposure." },
+  { year: "2014", title: "Insurance agency added", text: "Expanded into insurance placement so clients could act on survey findings through one adviser." },
+  { year: "2018", title: "Legal, tax and accounting", text: "Welcomed legal, accounting and tax specialists to cover the wider needs of growing companies." },
+  { year: "2022", title: "Industrial management", text: "Added engineering and industrial management consulting for plants and manufacturers." },
+  { year: "Today", title: "One integrated team", text: "Six disciplines working together from our office in Tebet, South Jakarta." },
+];
+
+export const leaders = [
+  { name: "Andreas Wibowo", role: "President Director", bio: "Leads the firm and its risk and insurance practice with over 20 years of experience in the industry." },
+  { name: "Maya Kusuma", role: "Director, Legal and Compliance", bio: "Advises clients on contracts, licensing and regulatory matters across sectors." },
+  { name: "Budi Santoso", role: "Director, Finance and Tax", bio: "Oversees accounting, tax and retirement programme advisory." },
+  { name: "Rina Hartono", role: "Head of Industrial Management", bio: "Works with plant teams on safety, process improvement and feasibility studies." },
+];
+
+export const projects = [
+  { title: "Fire and property risk survey for a manufacturing group", category: "Insurance Risk Assessor", place: "Cikarang", summary: "Surveyed five production sites, graded fire risk and delivered a prioritised improvement plan." },
+  { title: "Insurance programme review for a logistics company", category: "Insurance Agent", place: "Jakarta", summary: "Consolidated several policies, closed coverage gaps and simplified renewals." },
+  { title: "Employer pension programme redesign", category: "Retirement Fund Consultant", place: "Jakarta", summary: "Reviewed benefits and governance and set out a sustainable programme for employees." },
+  { title: "Commercial contract framework for a trading firm", category: "Law Consultant", place: "Surabaya", summary: "Prepared standard contract templates and a review process for supplier agreements." },
+  { title: "Tax compliance and reporting support", category: "Accounting and Tax Consultant", place: "Tangerang", summary: "Organised records, streamlined monthly reporting and prepared annual tax filings." },
+  { title: "Safety management system for a processing plant", category: "Industrial Management Consultant", place: "Karawang", summary: "Built a safety system with procedures, training and regular audits." },
+];
+
+export const testimonials = [
+  { quote: "The survey report was clear and practical. We knew exactly what to fix first.", name: "Operations Manager", company: "Manufacturing company, Cikarang" },
+  { quote: "Having insurance, legal and tax advice in one team saved us a lot of back and forth.", name: "Finance Director", company: "Trading company, Jakarta" },
+  { quote: "They explained our pension options in plain language and stayed with us through the changes.", name: "HR Manager", company: "Services company, Jakarta" },
+];
+
+export const jobs = [
+  { title: "Risk Surveyor", type: "Full-time", place: "Jakarta", text: "Visit client sites, assess risks and write clear survey reports. Engineering background preferred." },
+  { title: "Insurance Account Executive", type: "Full-time", place: "Jakarta", text: "Look after corporate clients, support renewals and guide them through claims." },
+  { title: "Tax and Accounting Associate", type: "Full-time", place: "Jakarta", text: "Prepare financial statements and tax reports and support client reviews." },
+  { title: "Legal Intern", type: "Internship", place: "Jakarta", text: "Assist with contract review and legal research under senior supervision." },
+];
+
+export const benefits = [
+  "Health insurance and annual check-up",
+  "Structured training and professional certification support",
+  "Mentoring from senior specialists",
+  "Central Jakarta office near public transport",
+  "Collaborative, friendly team culture",
+  "Clear paths to grow across disciplines",
+];
+
+export const employeeStories = [
+  { quote: "I learn something new on every project because I work next to specialists from other fields.", name: "Risk Surveyor, 3 years" },
+  { quote: "Senior colleagues take the time to teach. I have grown a lot since joining.", name: "Accounting Associate, 2 years" },
+];

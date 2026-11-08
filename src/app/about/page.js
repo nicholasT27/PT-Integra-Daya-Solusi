@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { PageHeader, Container, Section, SectionTitle, CallToAction, EmptyNote } from "@/components/Ui";
-import { values, company } from "@/lib/site";
+import { PageHeader, Container, Section, SectionTitle, CallToAction } from "@/components/Ui";
+import { values, company, history, leaders } from "@/lib/site";
 
 export const metadata = { title: "About Us" };
 
@@ -54,8 +54,38 @@ export default function About() {
               </div>
             ))}
           </div>
-          <div className="mt-10">
-            <EmptyNote>Profiles of our leadership team will be published here soon.</EmptyNote>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionTitle eyebrow="Our story" title="Company history" />
+          <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+            {history.map((h) => (
+              <li key={h.year} className="border-t-2 border-navy-600 pt-5">
+                <span className="font-serif text-2xl text-navy-500">{h.year}</span>
+                <h3 className="mt-2 font-semibold text-navy-900">{h.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{h.text}</p>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </Section>
+
+      <Section tone="ice">
+        <Container>
+          <SectionTitle eyebrow="Leadership team" title="The people leading the firm" />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {leaders.map((l) => (
+              <div key={l.name} className="rounded-xl bg-white p-6">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-navy-900 font-serif text-xl text-white">
+                  {l.name.split(" ").map((w) => w[0]).join("")}
+                </div>
+                <h3 className="mt-4 font-serif text-lg font-semibold text-navy-900">{l.name}</h3>
+                <p className="text-sm font-medium text-navy-500">{l.role}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{l.bio}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </Section>
