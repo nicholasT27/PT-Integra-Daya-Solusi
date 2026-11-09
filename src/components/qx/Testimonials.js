@@ -24,7 +24,7 @@ function WordQuote({ text, className = "" }) {
 
 // The Testimonials section: the clients are listed on the left and their quote fills a large stage on the right.
 // The quotes move on by themselves (a bar under the current client shows the time left) and pause while you point at
-// the section. Arrows, the names and the strip of quote cards underneath all let you jump to a quote yourself.
+// the section. The arrows and the names let you jump to a quote yourself.
 export default function Testimonials() {
   const [a, setA] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -37,10 +37,8 @@ export default function Testimonials() {
     return () => clearTimeout(timer);
   }, [a, paused, n]);
 
-  const row = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
-
   return (
-    <section className="relative overflow-hidden py-28" data-tone="#eaf0ff" data-glow="1">
+    <section className="relative py-28" data-tone="#eaf0ff" data-glow="1">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -74,21 +72,6 @@ export default function Testimonials() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* A slow strip of quote cards. Click one to bring its quote to the stage. */}
-      <div className="mt-14" style={{ maskImage: "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)" }}>
-        <div className="marquee flex gap-4 py-2" style={{ animationDuration: "60s" }}>
-          {row.map((x, i) => {
-            const idx = i % n;
-            return (
-              <button key={i} type="button" onClick={() => setA(idx)} aria-label={`Show the quote from ${x.name}`} className={`w-[330px] shrink-0 rounded-2xl border p-5 text-left transition-all duration-300 hover:-translate-y-1 ${a === idx ? "border-navy-600 bg-white shadow-xl" : "border-white bg-white/60 shadow-md backdrop-blur-xl"}`}>
-                <span className="line-clamp-3 text-sm font-semibold leading-snug text-navy-900">&ldquo;{x.quote}&rdquo;</span>
-                <span className="mt-3 flex items-center gap-2 text-xs text-muted"><Avatar name={x.name} size="h-7 w-7" active={a === idx} />{x.name}</span>
-              </button>
-            );
-          })}
         </div>
       </div>
     </section>
