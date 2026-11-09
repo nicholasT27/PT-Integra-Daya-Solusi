@@ -11,7 +11,7 @@ import { navLinks } from "@/lib/site";
 // "current page" pill once you scroll. On phones it opens a full-screen menu.
 export default function QxHeader() {
   const pathname = usePathname();
-  const onLight = pathname === "/";
+  const onLight = pathname === "/" || pathname.startsWith("/concepts");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
