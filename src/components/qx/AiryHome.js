@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { DetailTab, ArrowButton } from "@/components/quinn/Bits";
-import { Reveal, CountUp, TestimonialSlider } from "@/components/quinn/Interactive";
+import { Reveal, CountUp } from "@/components/quinn/Interactive";
+import Testimonials from "./Testimonials";
 import HeroMain from "./HeroMain";
 import ValueGrid from "./ValueGrid";
 import ServicesWired from "./ServicesWired";
 import AboutSection from "./AboutSection";
 import PageBackdrop from "./PageBackdrop";
-import { services, posts, testimonials } from "@/lib/site";
+import { posts } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 
@@ -47,20 +48,8 @@ export default function AiryHome() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="px-5 pb-28 sm:px-8" data-tone="#eaf0ff" data-glow="1">
-        <Reveal className="mx-auto max-w-6xl">
-          <div style={{ "--folder-color": "var(--color-ice-100)" }}>
-            <div className="folder-tab inline-flex items-center gap-2 rounded-t-2xl bg-ice-100 px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-navy-600">
-              <span className="h-2 w-2 rounded-full bg-navy-600" /> Testimonials
-            </div>
-            <div className="grid gap-10 rounded-tr-3xl bg-ice-100 p-8 text-navy-900 sm:p-14 lg:grid-cols-10">
-              <span className="text-8xl font-bold leading-none text-navy-600 lg:col-span-2">&ldquo;</span>
-              <div className="lg:col-span-8"><TestimonialSlider items={testimonials} /></div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+      {/* Testimonials: voices list, quote stage and a strip of quote cards */}
+      <Testimonials />
 
       {/* Insights */}
       <section className="py-28" data-tone="#f1f5ff" data-glow="0.9">
