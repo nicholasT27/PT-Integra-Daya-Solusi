@@ -1,26 +1,17 @@
-import fs from "node:fs";
-import path from "node:path";
 import Link from "next/link";
 import { DetailTab, ArrowButton } from "@/components/quinn/Bits";
 import { Reveal, CountUp, TestimonialSlider } from "@/components/quinn/Interactive";
 import HeroMain from "./HeroMain";
 import ValueGrid from "./ValueGrid";
 import ServicesWired from "./ServicesWired";
-import { AboutScene } from "./ScrollBits";
+import AboutSection from "./AboutSection";
 import PageBackdrop from "./PageBackdrop";
 import { services, posts, testimonials } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 
-// Reads the logo outline from the brand file, so it can be drawn as a line while scrolling.
-function logoOutline() {
-  const svg = fs.readFileSync(path.join(process.cwd(), "public/brand/ids-mark-blue.svg"), "utf8");
-  return { viewBox: svg.match(/viewBox="([^"]+)"/)[1], paths: [...svg.matchAll(/ d="([^"]+)"/g)].map((m) => m[1]) };
-}
-
 // The homepage: an airy hero that follows the mouse, then sections that come alive as you scroll.
 export default function AiryHome() {
-  const logo = logoOutline();
   const stats = [
     { big: <CountUp to={6} />, small: "Services", text: "Specialist disciplines under one roof", color: "bg-navy-600", card: "bg-navy-600", ink: "text-white", sub: "text-white/80" },
     { big: <CountUp to={1} />, small: "Team", text: "Insurance, legal, finance and engineering working together", color: "bg-white", card: "bg-navy-900", ink: "text-white", sub: "text-white/80" },
@@ -38,15 +29,8 @@ export default function AiryHome() {
       {/* What we offer: the six services wired to the logo */}
       <ServicesWired />
 
-      {/* About: the logo draws itself while you scroll */}
-      <AboutScene paths={logo.paths} viewBox={logo.viewBox}>
-        <DetailTab className="text-navy-600">About IDS</DetailTab>
-        <h2 className="mt-6 text-3xl font-bold leading-tight text-navy-900 sm:text-4xl">The only partner you need to look at every angle of your risk.</h2>
-        <p className="mt-6 indent-10 leading-relaxed text-muted">
-          Most firms split insurance, legal, tax and operations into separate advisers. At IDS they are integrated from the start. That means fewer people, faster answers and strategies that actually fit together.
-        </p>
-        <div className="mt-8"><ArrowButton href="/about">About us</ArrowButton></div>
-      </AboutScene>
+      {/* About: company information and a framed photo */}
+      <AboutSection />
 
       {/* Real value */}
       <section className="py-28" data-tone="#f5f8ff" data-glow="0.85">
