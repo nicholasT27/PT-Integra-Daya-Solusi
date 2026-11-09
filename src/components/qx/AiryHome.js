@@ -13,10 +13,10 @@ const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 // The homepage: an airy hero that follows the mouse, then sections that come alive as you scroll.
 export default function AiryHome() {
   const stats = [
-    { big: <CountUp to={6} />, small: "Services", text: "Specialist disciplines under one roof", color: "bg-navy-600", card: "bg-navy-600", ink: "text-white", sub: "text-white/80" },
-    { big: <CountUp to={1} />, small: "Team", text: "Insurance, legal, finance and engineering working together", color: "bg-white", card: "bg-navy-900", ink: "text-white", sub: "text-white/80" },
-    { big: <CountUp to={3} />, small: "Pillars", text: "Integration, collaboration and continuity", color: "bg-navy-600", card: "bg-sky-300", ink: "text-navy-900", sub: "text-navy-900/80" },
-    { big: "JKT", small: "Based", text: "Menara MTH, Tebet, South Jakarta", color: "bg-navy-600", card: "bg-ice-100", ink: "text-navy-900", sub: "text-navy-900/70" },
+    { big: <CountUp to={6} />, small: "Services", text: "Specialist disciplines under one roof", color: "bg-navy-600" },
+    { big: <CountUp to={1} />, small: "Team", text: "Insurance, legal, finance and engineering working together", color: "bg-sky-300" },
+    { big: <CountUp to={3} />, small: "Pillars", text: "Integration, collaboration and continuity", color: "bg-navy-900" },
+    { big: "JKT", small: "Based", text: "Menara MTH, Tebet, South Jakarta", color: "bg-ice-100" },
   ];
 
   return (
