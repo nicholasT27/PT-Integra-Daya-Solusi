@@ -5,7 +5,7 @@ import { company, navLinks } from "@/lib/site";
 // The bottom of this design: a giant slogan, the logo, links and contact details.
 export default function QxFooter() {
   return (
-    <footer className="bg-navy-950 px-5 pb-8 pt-24 text-white sm:px-8">
+    <footer className="relative z-10 bg-navy-950 px-5 pb-8 pt-24 text-white sm:px-8">
       <div className="mx-auto max-w-6xl">
         <p className="text-[13vw] font-bold leading-[0.9] tracking-tight text-navy-600 lg:text-[9rem]">
           Integrated.<br />Trusted.

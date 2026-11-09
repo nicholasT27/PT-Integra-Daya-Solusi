@@ -2,37 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Icon from "@/components/Icon";
 import { DetailTab } from "@/components/quinn/Bits";
 import { Reveal } from "@/components/quinn/Interactive";
-import FlowLines from "./FlowLines";
 import { services } from "@/lib/site";
-
-// The same soft background as the hero: drifting glows, flowing lines, and a glow plus dot pattern that follow the cursor.
-function Backdrop({ id, children }) {
-  const ref = useRef(null);
-  function onMove(e) {
-    const r = ref.current.getBoundingClientRect();
-    ref.current.style.setProperty("--px", `${e.clientX - r.left}px`);
-    ref.current.style.setProperty("--py", `${e.clientY - r.top}px`);
-  }
-  const mask = (r) => `radial-gradient(${r}px circle at var(--px) var(--py), black, transparent 70%)`;
-  return (
-    <section id={id} ref={ref} onMouseMove={onMove} className="relative isolate overflow-clip bg-white" style={{ "--px": "70%", "--py": "20%" }}>
-      <div className="absolute inset-0 -z-10">
-        <span className="drift absolute -right-24 top-10 h-[460px] w-[460px] rounded-full bg-navy-600/20 blur-3xl" />
-        <span className="drift absolute -left-32 top-1/2 h-[420px] w-[420px] rounded-full bg-sky-300/60 blur-3xl" style={{ animationDelay: "-6s" }} />
-        <span className="drift absolute bottom-0 right-1/4 h-[380px] w-[380px] rounded-full bg-ice-100 blur-3xl" style={{ animationDelay: "-11s" }} />
-      </div>
-      <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(520px circle at var(--px) var(--py), rgba(0,58,242,0.13), transparent 65%)" }} />
-      <div className="absolute inset-0 -z-10 opacity-50" style={{ backgroundImage: "radial-gradient(#003af2 1.2px, transparent 1.2px)", backgroundSize: "26px 26px", maskImage: mask(320), WebkitMaskImage: mask(320) }} />
-      <FlowLines className="-z-10" color="#003af2" opacity={0.28} />
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white to-transparent" />
-      {children}
-    </section>
-  );
-}
 
 // Keeps track of the highlighted service. It moves on by itself every few seconds and stops while the visitor points at something.
 function useHighlight(ms = 3600) {
@@ -82,7 +56,7 @@ export default function ServicesWired() {
   const rightRows = ["lg:col-start-3 lg:row-start-1", "lg:col-start-3 lg:row-start-2", "lg:col-start-3 lg:row-start-3"];
 
   return (
-    <Backdrop id="services">
+    <section id="services" data-tone="#f1f5ff" data-glow="0.9">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-28 sm:px-8" onMouseLeave={h.resume}>
         <div className="text-center">
           <Reveal><DetailTab className="text-navy-600">What we offer.</DetailTab></Reveal>
@@ -137,6 +111,6 @@ export default function ServicesWired() {
           </Link>
         </div>
       </div>
-    </Backdrop>
+    </section>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import FlowLines from "./FlowLines";
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
@@ -28,9 +27,8 @@ export function AboutScene({ paths, viewBox, children }) {
 
   const draw = clamp(p * 1.5);
   return (
-    <section ref={ref} className="relative h-[230vh] bg-ice-50">
-      <div className="mesh sticky top-0 isolate h-screen overflow-hidden">
-        <FlowLines className="-z-10" color="#003af2" opacity={0.25} />
+    <section ref={ref} className="relative h-[230vh]" data-tone="#dce7ff" data-glow="1.25">
+      <div className="sticky top-0 h-screen overflow-hidden">
         <svg viewBox={viewBox} className="absolute left-1/2 top-1/2 w-[min(92%,1150px)] -translate-x-1/2 -translate-y-1/2" style={{ transform: `translate(-50%, -50%) scale(${0.9 + 0.12 * p})` }} fill="#003af2" stroke="#003af2" aria-hidden="true">
           {paths.map((d, i) => (
             <path key={i} d={d} pathLength="1" strokeWidth="2" strokeOpacity="0.55" vectorEffect="non-scaling-stroke" strokeLinejoin="round" style={{ strokeDasharray: 1, strokeDashoffset: 1 - draw, fillOpacity: clamp((p - 0.5) * 2.4) * 0.1 }} />
@@ -44,22 +42,4 @@ export function AboutScene({ paths, viewBox, children }) {
       </div>
     </section>
   );
-}
-
-// Moves its content up or down slower than the page as you scroll, for a feeling of depth.
-export function ScrollShift({ speed = 0.15, children, className = "" }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    function update() {
-      const el = ref.current;
-      if (!el) return;
-      const r = el.parentElement.getBoundingClientRect();
-      el.style.transform = `translateY(${(r.top + r.height / 2 - window.innerHeight / 2) * -speed}px)`;
-    }
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, [speed]);
-  return <div ref={ref} className={className}>{children}</div>;
 }

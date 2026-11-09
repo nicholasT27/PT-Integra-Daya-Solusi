@@ -5,9 +5,9 @@ import { DetailTab, ArrowButton } from "@/components/quinn/Bits";
 import { Reveal, CountUp, TestimonialSlider } from "@/components/quinn/Interactive";
 import HeroMain from "./HeroMain";
 import ValueGrid from "./ValueGrid";
-import FlowLines from "./FlowLines";
 import ServicesWired from "./ServicesWired";
-import { AboutScene, ScrollShift } from "./ScrollBits";
+import { AboutScene } from "./ScrollBits";
+import PageBackdrop from "./PageBackdrop";
 import { services, posts, testimonials } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
@@ -29,7 +29,10 @@ export default function AiryHome() {
   ];
 
   return (
-    <div className="bg-white text-ink">
+    <div className="relative isolate text-ink">
+      {/* One background for the whole page. Sections are transparent and only say what tone they want. */}
+      <PageBackdrop />
+
       <HeroMain />
 
       {/* What we offer: the six services wired to the logo */}
@@ -46,7 +49,7 @@ export default function AiryHome() {
       </AboutScene>
 
       {/* Real value */}
-      <section className="py-28">
+      <section className="py-28" data-tone="#f5f8ff" data-glow="0.85">
         <div className={wrap}>
           <div className="grid gap-10 lg:grid-cols-10">
             <Reveal className="lg:col-span-6"><h2 className="text-6xl font-bold leading-none text-navy-900 sm:text-8xl">Real value.</h2></Reveal>
@@ -61,7 +64,7 @@ export default function AiryHome() {
       </section>
 
       {/* Testimonials */}
-      <section className="px-5 pb-28 sm:px-8">
+      <section className="px-5 pb-28 sm:px-8" data-tone="#eaf0ff" data-glow="1">
         <Reveal className="mx-auto max-w-6xl">
           <div style={{ "--folder-color": "var(--color-ice-100)" }}>
             <div className="folder-tab inline-flex items-center gap-2 rounded-t-2xl bg-ice-100 px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-navy-600">
@@ -76,7 +79,7 @@ export default function AiryHome() {
       </section>
 
       {/* Insights */}
-      <section className="bg-ice-50 py-28">
+      <section className="py-28" data-tone="#f1f5ff" data-glow="0.9">
         <div className={wrap}>
           <div className="grid gap-8 lg:grid-cols-10">
             <Reveal className="lg:col-span-6"><h2 className="text-4xl font-bold text-navy-900 sm:text-6xl">Insights</h2></Reveal>
@@ -103,12 +106,7 @@ export default function AiryHome() {
       </section>
 
       {/* Closing call to action */}
-      <section className="mesh relative isolate overflow-hidden py-40 text-center">
-        <ScrollShift speed={0.2} className="absolute inset-0 -z-10">
-          <span className="drift absolute -left-24 top-10 h-[420px] w-[420px] rounded-full bg-navy-600/25 blur-3xl" />
-          <span className="drift absolute -right-24 bottom-0 h-[460px] w-[460px] rounded-full bg-sky-300/60 blur-3xl" style={{ animationDelay: "-7s" }} />
-        </ScrollShift>
-        <FlowLines className="-z-10" color="#003af2" opacity={0.35} />
+      <section className="py-40 text-center" data-tone="#dde7ff" data-glow="1.2">
         <div className={wrap}>
           <Reveal>
             <DetailTab className="text-navy-600">Contact PT Integra Daya Solusi</DetailTab>
@@ -117,6 +115,9 @@ export default function AiryHome() {
           </Reveal>
         </div>
       </section>
+
+      {/* A long soft fade, so the page eases into the dark footer instead of ending on a hard edge */}
+      <div aria-hidden="true" className="h-56 bg-gradient-to-b from-transparent to-navy-950" />
     </div>
   );
 }
