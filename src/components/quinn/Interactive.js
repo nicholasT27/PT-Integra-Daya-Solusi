@@ -214,3 +214,33 @@ export function InsightPicker({ posts }) {
     </div>
   );
 }
+
+// A thin line that draws itself from left to right when it scrolls into view.
+export function DrawLine({ className = "bg-current", delay = 0 }) {
+  const ref = useRef(null);
+  const [on, setOn] = useState(true);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.95) return;
+    setOn(false);
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        setOn(true);
+        io.disconnect();
+      }
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <span
+      ref={ref}
+      aria-hidden="true"
+      className={`block h-px w-full origin-left transition-transform duration-[1400ms] ease-out ${on ? "scale-x-100" : "scale-x-0"} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    />
+  );
+}

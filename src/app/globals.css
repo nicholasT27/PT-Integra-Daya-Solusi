@@ -78,3 +78,16 @@ h1, h2, h3 {
 @media (prefers-reduced-motion: reduce) {
   .qx-bg, .qx-folder, .qx-1, .qx-2, .qx-3 { animation: none; }
 }
+
+/* Line drawing: the logo outline draws itself, then fills in softly. */
+@keyframes qxDraw { to { stroke-dashoffset: 0; } }
+@keyframes qxFill { to { fill-opacity: 0.16; } }
+.logo-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  fill-opacity: 0;
+  animation: qxDraw 2.8s cubic-bezier(0.65, 0, 0.35, 1) 0.9s forwards, qxFill 1.2s ease-out 3.4s forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-draw path { animation: none; stroke-dashoffset: 0; fill-opacity: 0.16; }
+}

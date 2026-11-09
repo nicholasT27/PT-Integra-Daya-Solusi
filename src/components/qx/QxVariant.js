@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowButton, DetailTab } from "@/components/quinn/Bits";
 import RevealText from "@/components/quinn/RevealText";
-import { Reveal, ParallaxBg, TestimonialSlider } from "@/components/quinn/Interactive";
+import { Reveal, ParallaxBg, TestimonialSlider, DrawLine } from "@/components/quinn/Interactive";
+import LogoDraw from "./LogoDraw";
 import QxHeader from "./QxHeader";
 import QxFooter from "./QxFooter";
 import ValueGrid from "./ValueGrid";
@@ -16,6 +17,7 @@ const themes = {
   // J: bright, Blue Integrity hero and colour-block stat cards
   j: {
     page: "bg-white text-ink", accent: "text-navy-600", soft: "text-muted", line: "border-navy-900/15", title: "text-navy-900",
+    draw: true,
     heroBg: "photo", heroOverlay: "bg-navy-600/55", folder: "bg-navy-600", folderVar: "var(--color-navy-600)", folderText: "text-white", tabText: "text-white", dot: "bg-white",
     h1: "text-white", p: "text-white/85", btn: "white",
     services: "rows", hoverRow: "hover:bg-ice-50",
@@ -73,10 +75,16 @@ export default function QxVariant({ v = "j" }) {
     <Reveal key={s.slug} delay={i * 60}>
       <Link
         href={`/services/${s.slug}`}
-        className={`group flex flex-col gap-3 border-t py-8 transition-colors last:border-b sm:flex-row sm:items-baseline sm:gap-10 ${t.line} ${
+        className={`group relative flex flex-col gap-3 py-8 transition-colors sm:flex-row sm:items-baseline sm:gap-10 ${t.draw ? "" : `border-t last:border-b ${t.line}`} ${
           t.services === "fill" ? "hover:border-navy-600 hover:bg-navy-600 hover:px-6 hover:text-white" : `${t.hoverRow} sm:px-2`
         }`}
       >
+        {t.draw && (
+          <>
+            <span className="absolute inset-x-0 top-0"><DrawLine className="bg-navy-900/25" delay={i * 80} /></span>
+            {i === services.length - 1 && <span className="absolute inset-x-0 bottom-0"><DrawLine className="bg-navy-900/25" delay={400} /></span>}
+          </>
+        )}
         <span className={`w-10 text-xl font-semibold ${t.services === "fill" ? "text-navy-600 group-hover:text-sky-300" : t.accent}`}>{i + 1}</span>
         <div className="flex-1">
           <h2 className="text-3xl font-bold leading-tight transition-transform duration-300 group-hover:translate-x-2 sm:text-4xl">{s.title}</h2>
@@ -105,6 +113,11 @@ export default function QxVariant({ v = "j" }) {
           <>
             <div className="qx-bg absolute inset-0 -z-20"><ParallaxBg src="/brand/skyscrapers.jpg" /></div>
             <div className={`absolute inset-0 -z-10 ${t.heroOverlay}`} />
+            {t.draw && (
+              <div className="pointer-events-none absolute inset-x-0 top-[12vh] -z-10 mx-auto w-[min(92%,1100px)]">
+                <LogoDraw className="w-full" />
+              </div>
+            )}
           </>
         ) : (
           <div className="qx-bg absolute inset-0 -z-10"><Pattern opacity={0.16} /></div>
@@ -189,7 +202,8 @@ export default function QxVariant({ v = "j" }) {
               </p>
             </Reveal>
           </div>
-          <div className="mt-16"><ValueGrid items={stats} /></div>
+          {t.draw && <div className="mt-16"><DrawLine className="bg-navy-900/25" /></div>}
+          <div className="mt-10"><ValueGrid items={stats} /></div>
         </div>
       </section>
 
