@@ -12,7 +12,7 @@ import { services } from "@/lib/site";
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 
 // A large rounded button with a circular arrow, used for the "Learn more" actions.
-function BigLearn({ href, children, tone = "blue" }) {
+export function BigLearn({ href, children, tone = "blue" }) {
   return (
     <Link href={href} className={`group inline-flex items-center gap-4 rounded-full py-2.5 pl-8 pr-2.5 text-lg font-semibold shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl ${tone === "blue" ? "bg-navy-600 text-white hover:bg-navy-700" : "bg-white text-navy-900 hover:bg-ice-100"}`}>
       {children}
@@ -22,7 +22,7 @@ function BigLearn({ href, children, tone = "blue" }) {
 }
 
 // Moves the highlight on to the next service every few seconds, unless the visitor is pointing at something.
-function useCycle(paused, ms = 3400) {
+export function useCycle(paused, ms = 3400) {
   const [a, setA] = useState(0);
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -33,7 +33,7 @@ function useCycle(paused, ms = 3400) {
 }
 
 // The logo disc in the middle of the orbit.
-function Core() {
+export function Core() {
   return (
     <div className="absolute left-1/2 top-1/2 z-10 flex h-[24%] w-[24%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-2xl ring-1 ring-navy-600/10">
       <span className="absolute inset-0 animate-ping rounded-full bg-navy-600/10" style={{ animationDuration: "3s" }} />
@@ -76,7 +76,7 @@ function Dots({ a, setA }) {
 }
 
 // The orbit with all six services always visible on three turning rings. The highlighted one is larger and glowing.
-function Orbit({ a, onHover, onLeave }) {
+export function Orbit({ a, onHover, onLeave }) {
   const rings = [{ r: 0.22, dur: 46, rev: false }, { r: 0.33, dur: 64, rev: true }, { r: 0.44, dur: 84, rev: false }];
   return (
     <div className="relative mx-auto aspect-square w-[min(90vw,560px)]" style={{ "--s": "min(90vw, 560px)" }} onMouseLeave={onLeave}>
