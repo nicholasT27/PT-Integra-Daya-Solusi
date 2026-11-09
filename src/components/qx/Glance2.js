@@ -234,3 +234,92 @@ export function GlanceD() {
     </Shell>
   );
 }
+
+// A service card for the wired layout. A small dot on its inner edge marks where the line from the logo arrives.
+function NetCard({ s, i, a, hover, side }) {
+  const on = a === i;
+  return (
+    <div className="py-2 lg:h-full">
+      <Link href={`/services/${s.slug}`} onMouseEnter={() => hover(i)} onFocus={() => hover(i)} className={`group relative block h-full rounded-3xl border p-5 transition-all duration-300 ${on ? "border-navy-600 bg-white shadow-2xl" : "border-white bg-white/65 shadow-md backdrop-blur-xl hover:bg-white"}`}>
+        <span className={`absolute top-1/2 hidden h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-white transition-all duration-300 lg:block ${side === "left" ? "-right-[7px]" : "-left-[7px]"} ${on ? "scale-125 bg-navy-600 shadow-[0_0_0_5px_rgba(0,58,242,0.2)]" : "bg-navy-600/40"}`} />
+        <span className="flex items-center justify-between">
+          <span className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-300 ${on ? "bg-navy-600 text-white" : "bg-ice-100 text-navy-600"}`}><Icon name={s.icon} /></span>
+          <span className="text-sm font-semibold text-navy-600/50">0{i + 1}</span>
+        </span>
+        <span className="mt-4 block text-lg font-bold leading-tight text-navy-900">{s.title}</span>
+        <span className="mt-1.5 block text-sm leading-snug text-muted">{s.short}</span>
+        <span className="mt-3 block text-sm font-semibold text-navy-600">Learn more <span className="inline-block transition-transform group-hover:translate-x-1.5">→</span></span>
+      </Link>
+    </div>
+  );
+}
+
+// Design E: the centred stage with the wired network from design A. Each service node is connected to the logo
+// and its line carries light pulses on to the matching card, so the network points straight at each section.
+export function GlanceE() {
+  const h = useHighlight(3600);
+  const ys = [100 / 6, 50, 500 / 6];
+  const pos = (i) => ({ x: i < 3 ? 17 : 83, y: ys[i % 3] });
+  const route = (i) => {
+    const { x, y } = pos(i);
+    return i < 3 ? `M50 50 C 38 50, 30 ${y}, ${x} ${y} L 0 ${y}` : `M50 50 C 62 50, 70 ${y}, ${x} ${y} L 100 ${y}`;
+  };
+  const leftRows = ["lg:col-start-1 lg:row-start-1", "lg:col-start-1 lg:row-start-2", "lg:col-start-1 lg:row-start-3"];
+  const rightRows = ["lg:col-start-3 lg:row-start-1", "lg:col-start-3 lg:row-start-2", "lg:col-start-3 lg:row-start-3"];
+
+  return (
+    <Shell id="g3-e" tag="Glance E · Wired stage">
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-28 sm:px-8" onMouseLeave={h.resume}>
+        <div className="text-center">
+          <Reveal><DetailTab className="text-navy-600">What we offer.</DetailTab></Reveal>
+          <h2 className="mx-auto mt-6 max-w-3xl text-balance text-4xl font-bold leading-[1.05] text-navy-900 sm:text-6xl">Every angle, <span className="shine-text">wired together.</span></h2>
+        </div>
+
+        <div className="mt-14 grid gap-0 lg:auto-rows-fr lg:grid-cols-[1fr_580px_1fr]">
+          <div className="mb-6 flex justify-center lg:hidden">
+            <span className="flex h-28 w-28 items-center justify-center rounded-full bg-white shadow-2xl ring-1 ring-navy-600/10"><Image src="/brand/ids-mark-blue.svg" alt="IDS" width={160} height={54} className="w-[64%]" /></span>
+          </div>
+
+          {services.slice(0, 3).map((s, i) => <div key={s.slug} className={leftRows[i]}><NetCard s={s} i={i} a={h.a} hover={h.hover} side="left" /></div>)}
+
+          <div className="relative hidden lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:block">
+            <span className="orbit-slow absolute left-1/2 top-1/2 aspect-square h-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-navy-600/25" />
+            <span className="absolute left-1/2 top-1/2 aspect-square h-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-navy-600/10" />
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" fill="none" aria-hidden="true">
+              {services.map((_, i) => {
+                const on = h.a === i;
+                return (
+                  <g key={i}>
+                    <path d={route(i)} stroke="#003af2" strokeOpacity={on ? 0.45 : 0.16} strokeWidth={on ? 2 : 1.2} vectorEffect="non-scaling-stroke" style={{ transition: "all 400ms" }} />
+                    <path d={route(i)} pathLength="1" className="flow-line" stroke="#003af2" strokeOpacity={on ? 1 : 0.55} strokeWidth={on ? 3.2 : 1.8} strokeLinecap="round" vectorEffect="non-scaling-stroke" style={{ "--d": on ? "2.2s" : "5s", animationDelay: `-${i * 0.7}s` }} />
+                  </g>
+                );
+              })}
+            </svg>
+            {services.map((s, i) => {
+              const { x, y } = pos(i);
+              const on = h.a === i;
+              return (
+                <Link key={s.slug} href={`/services/${s.slug}`} aria-label={s.title} onMouseEnter={() => h.hover(i)} onFocus={() => h.hover(i)} className="absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center" style={{ left: `${x}%`, top: `${y}%` }}>
+                  {on && <span className="absolute top-0 h-[4.2rem] w-[4.2rem] animate-ping rounded-full bg-navy-600/25" />}
+                  <span className={`relative flex h-[4.2rem] w-[4.2rem] items-center justify-center rounded-full shadow-xl ring-1 transition-all duration-500 ${on ? "bg-navy-600 text-white ring-navy-600 shadow-[0_0_0_8px_rgba(0,58,242,0.12),0_18px_40px_rgba(0,58,242,0.35)]" : "bg-white text-navy-600 ring-navy-600/15"}`} style={{ transform: `scale(${on ? 1.15 : 1})` }}><Icon name={s.icon} className="h-7 w-7" /></span>
+                </Link>
+              );
+            })}
+            <div className="absolute left-1/2 top-1/2 flex aspect-square h-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-2xl ring-1 ring-navy-600/10">
+              <span className="absolute inset-0 animate-ping rounded-full bg-navy-600/10" style={{ animationDuration: "3s" }} />
+              <Image src="/brand/ids-mark-blue.svg" alt="IDS" width={160} height={54} className="relative w-[64%]" />
+            </div>
+          </div>
+
+          {services.slice(3).map((s, i) => <div key={s.slug} className={rightRows[i]}><NetCard s={s} i={i + 3} a={h.a} hover={h.hover} side="right" /></div>)}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center gap-4">
+          <BigLearn href={`/services/${services[h.a].slug}`}>Learn more</BigLearn>
+          <Link href="/services" className="text-sm font-semibold text-navy-600 hover:underline">All services →</Link>
+        </div>
+      </div>
+    </Shell>
+  );
+}
