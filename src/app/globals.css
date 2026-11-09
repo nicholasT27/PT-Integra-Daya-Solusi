@@ -147,3 +147,8 @@ h1, h2, h3 {
 @keyframes qxNudge { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(8px); opacity: 1; } }
 .nudge { animation: qxNudge 1.6s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .bob, .nudge { animation: none; } }
+
+/* Motion for the call-to-action button designs. */
+@keyframes qxNudgeX { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+@keyframes qxBreathe { 0%, 100% { transform: scale(1); opacity: 0.55; } 60% { transform: scale(1.22); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cta-nudge, .cta-breathe { animation: none !important; } }

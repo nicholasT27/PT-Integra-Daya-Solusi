@@ -8,6 +8,7 @@ import { DetailTab } from "@/components/quinn/Bits";
 import { Reveal } from "@/components/quinn/Interactive";
 import { Shell, keys } from "./Sections2";
 import { BigLearn, Core, Orbit, useCycle } from "./Glance";
+import Cta from "./Cta";
 import { services } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
@@ -248,7 +249,6 @@ function NetCard({ s, i, a, hover, side }) {
         </span>
         <span className="mt-4 block text-lg font-bold leading-tight text-navy-900">{s.title}</span>
         <span className="mt-1.5 block text-sm leading-snug text-muted">{s.short}</span>
-        <span className="mt-3 block text-sm font-semibold text-navy-600">Learn more <span className="inline-block transition-transform group-hover:translate-x-1.5">→</span></span>
       </Link>
     </div>
   );
@@ -256,7 +256,7 @@ function NetCard({ s, i, a, hover, side }) {
 
 // Design E: the centred stage with the wired network from design A. Each service node is connected to the logo
 // and its line carries light pulses on to the matching card, so the network points straight at each section.
-export function GlanceE() {
+export function GlanceE({ cta = 1 }) {
   const h = useHighlight(3600);
   const ys = [100 / 6, 50, 500 / 6];
   const pos = (i) => ({ x: i < 3 ? 17 : 83, y: ys[i % 3] });
@@ -315,10 +315,7 @@ export function GlanceE() {
           {services.slice(3).map((s, i) => <div key={s.slug} className={rightRows[i]}><NetCard s={s} i={i + 3} a={h.a} hover={h.hover} side="right" /></div>)}
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-4">
-          <BigLearn href={`/services/${services[h.a].slug}`}>Learn more</BigLearn>
-          <Link href="/services" className="text-sm font-semibold text-navy-600 hover:underline">All services →</Link>
-        </div>
+        <div className="mt-14 flex min-h-[9rem] items-center justify-center"><Cta variant={cta} href={`/services/${services[h.a].slug}`} /></div>
       </div>
     </Shell>
   );
