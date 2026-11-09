@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 // One statistic card with a coloured vertical line that draws itself down as you scroll.
-function ValueCard({ big, small, text, color }) {
+function ValueCard({ big, small, text, color, card = "bg-white", ink = "text-navy-900", sub = "text-muted" }) {
   const ref = useRef(null);
   const [p, setP] = useState(1);
   const [shown, setShown] = useState(true);
@@ -24,12 +24,12 @@ function ValueCard({ big, small, text, color }) {
   }, []);
 
   return (
-    <div ref={ref} className={`relative flex min-h-[320px] flex-col justify-between bg-white p-7 pl-9 transition-all duration-700 ${shown ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"}`}>
+    <div ref={ref} className={`relative flex min-h-[320px] flex-col justify-between p-7 pl-9 ${card} transition-all duration-700 ${shown ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"}`}>
       <span className={`absolute inset-y-0 left-0 w-1.5 origin-top ${color}`} style={{ transform: `scaleY(${p})` }} />
-      <div className="break-words text-4xl font-bold leading-[1.1] text-navy-900 sm:text-5xl lg:text-4xl">
+      <div className={`break-words text-4xl font-bold leading-[1.1] ${ink} sm:text-5xl lg:text-4xl`}>
         {big}<br />{small}
       </div>
-      <p className="text-sm text-muted">{text}</p>
+      <p className={`text-sm ${sub}`}>{text}</p>
     </div>
   );
 }
