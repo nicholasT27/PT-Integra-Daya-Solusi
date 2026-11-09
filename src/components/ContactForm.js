@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowButtonSubmit } from "@/components/quinn/FormBits";
 import { company, services } from "@/lib/site";
 
 // A contact form. It opens an email draft once a company email is set in site.js; until then it asks visitors to call.
 export default function ContactForm() {
   const [note, setNote] = useState("");
   const field =
-    "mt-1 w-full rounded-md border border-navy-900/15 bg-white px-3 py-2.5 text-sm outline-none focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20";
+    "mt-1.5 w-full rounded-xl border border-navy-900/15 bg-white/80 px-4 py-3 text-sm text-navy-900 outline-none transition-colors placeholder:text-navy-900/30 focus:border-navy-600 focus:bg-white focus:ring-4 focus:ring-navy-600/10";
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,36 +23,19 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
-      <label className="text-sm font-medium">
-        Full name
-        <input name="name" required className={field} />
-      </label>
-      <label className="text-sm font-medium">
-        Company
-        <input name="company" className={field} />
-      </label>
-      <label className="text-sm font-medium">
-        Phone
-        <input name="phone" type="tel" className={field} />
-      </label>
-      <label className="text-sm font-medium">
-        Service of interest
+      <label className="text-sm font-semibold text-navy-900">Full name<input name="name" required className={field} /></label>
+      <label className="text-sm font-semibold text-navy-900">Company<input name="company" className={field} /></label>
+      <label className="text-sm font-semibold text-navy-900">Phone<input name="phone" type="tel" className={field} /></label>
+      <label className="text-sm font-semibold text-navy-900">Service of interest
         <select name="service" className={field} defaultValue="">
           <option value="">Not sure yet</option>
-          {services.map((s) => (
-            <option key={s.slug}>{s.title}</option>
-          ))}
+          {services.map((s) => <option key={s.slug}>{s.title}</option>)}
         </select>
       </label>
-      <label className="text-sm font-medium sm:col-span-2">
-        How can we help?
-        <textarea name="message" rows={5} required className={field} />
-      </label>
+      <label className="text-sm font-semibold text-navy-900 sm:col-span-2">How can we help?<textarea name="message" rows={5} required className={field} /></label>
       <div className="sm:col-span-2">
-        <button type="submit" className="rounded-md bg-navy-600 px-6 py-3 text-sm font-semibold text-white hover:bg-navy-500">
-          Send message
-        </button>
-        {note && <p role="status" className="mt-4 text-sm text-navy-700">{note}</p>}
+        <ArrowButtonSubmit>Send message</ArrowButtonSubmit>
+        {note && <p role="status" className="mt-4 rounded-xl bg-ice-100 p-4 text-sm text-navy-700">{note}</p>}
       </div>
     </form>
   );

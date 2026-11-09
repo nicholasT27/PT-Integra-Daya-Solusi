@@ -6,7 +6,6 @@ import HeroMain from "./HeroMain";
 import ValueGrid from "./ValueGrid";
 import ServicesWired from "./ServicesWired";
 import AboutSection from "./AboutSection";
-import PageBackdrop from "./PageBackdrop";
 import { posts } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
@@ -21,10 +20,7 @@ export default function AiryHome() {
   ];
 
   return (
-    <div className="relative isolate text-ink">
-      {/* One background for the whole page. Sections are transparent and only say what tone they want. */}
-      <PageBackdrop />
-
+    <div className="text-ink">
       <HeroMain />
 
       {/* What we offer: the six services wired to the logo */}

@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import FlowLines from "./FlowLines";
 
@@ -12,6 +13,7 @@ const smooth = (t) => t * t * (3 - 2 * t);
 // each section says what tone it wants (data-tone) and the layer blends between them, so there are no seams.
 export default function PageBackdrop() {
   const ref = useRef(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const el = ref.current;
@@ -69,7 +71,7 @@ export default function PageBackdrop() {
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("mousemove", onMove);
     };
-  }, []);
+  }, [pathname]);
 
   const mask = (r) => `radial-gradient(${r}px circle at var(--px) var(--py), black, transparent 70%)`;
   return (

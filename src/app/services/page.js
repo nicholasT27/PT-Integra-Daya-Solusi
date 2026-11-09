@@ -1,38 +1,36 @@
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { PageHeader, Container, Section, CallToAction } from "@/components/Ui";
+import { PageHeader, Container, Section, Glass, CallToAction } from "@/components/Ui";
+import { Reveal } from "@/components/quinn/Interactive";
 import { services } from "@/lib/site";
 
 export const metadata = { title: "Services" };
 
-// The Services page: lists all six services with a short description of each.
+// The Services page: all six services as cards, each leading to its own page.
 export default function Services() {
   return (
     <>
       <PageHeader
         eyebrow="Services and solutions"
-        title="Six specialist services, working together"
+        title="Six specialist services,"
+        accent="working together."
         text="Use one service on its own or combine several for a joined-up approach."
       />
       <Section>
-        <Container className="grid gap-6 md:grid-cols-2">
-          {services.map((s) => (
-            <Link
-              key={s.slug}
-              href={`/services/${s.slug}`}
-              className="group flex gap-5 rounded-xl border border-navy-900/10 p-7 transition hover:border-navy-500/40 hover:shadow-lg"
-            >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-ice-100 text-navy-600">
-                <Icon name={s.icon} />
-              </span>
-              <span>
-                <h2 className="font-serif text-xl font-semibold text-navy-900">{s.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{s.short}</p>
-                <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-navy-600">
-                  View details <Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" />
-                </span>
-              </span>
-            </Link>
+        <Container className="grid gap-5 md:grid-cols-2">
+          {services.map((s, i) => (
+            <Reveal key={s.slug} delay={(i % 2) * 100} className="h-full">
+              <Link href={`/services/${s.slug}`} className="group block h-full">
+                <Glass className="flex h-full gap-5 p-7 transition-all duration-300 group-hover:-translate-y-2 group-hover:bg-white group-hover:shadow-2xl">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-navy-600 text-white transition-transform duration-300 group-hover:rotate-6"><Icon name={s.icon} className="h-7 w-7" /></span>
+                  <span>
+                    <span className="flex items-center gap-3"><span className="text-sm font-semibold text-navy-600/60">0{i + 1}</span><h2 className="text-2xl font-bold text-navy-900">{s.title}</h2></span>
+                    <span className="mt-2 block text-sm leading-relaxed text-muted">{s.short}</span>
+                    <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-navy-600">View details <span className="transition-transform duration-300 group-hover:translate-x-2">→</span></span>
+                  </span>
+                </Glass>
+              </Link>
+            </Reveal>
           ))}
         </Container>
       </Section>

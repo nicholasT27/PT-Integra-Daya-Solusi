@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { PageHeader, Container, Section, SectionTitle, CallToAction, EmptyNote } from "@/components/Ui";
+import { PageHeader, Container, Section, SectionTitle, Glass, CallToAction, EmptyNote } from "@/components/Ui";
+import { Reveal } from "@/components/quinn/Interactive";
 import { posts } from "@/lib/site";
 
 export const metadata = { title: "Insights" };
@@ -9,33 +10,46 @@ function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
 
-// The Insights page: articles and news, with a place for guides and reports.
+// The Insights page: the latest article large, the others beside it, and a place for guides and reports.
 export default function Insights() {
+  const [first, ...rest] = posts;
   return (
     <>
-      <PageHeader
-        eyebrow="Blog"
-        title="Insights"
-        text="Articles, news and industry trends from our consultants."
-      />
+      <PageHeader eyebrow="Blog" title="Insights from" accent="our consultants." text="Articles, news and industry trends on risk, insurance and business." />
       <Section>
-        <Container>
-          <div className="grid gap-6 md:grid-cols-3">
-            {posts.map((p) => (
-              <Link key={p.slug} href={`/insights/${p.slug}`} className="rounded-xl border border-navy-900/10 p-6 transition hover:border-navy-500/40 hover:shadow-lg">
-                <span className="text-xs font-semibold uppercase tracking-widest text-navy-500">{p.category}</span>
-                <h2 className="mt-3 font-serif text-xl font-semibold text-navy-900">{p.title}</h2>
-                <p className="mt-2 text-sm text-muted">{p.summary}</p>
-                <p className="mt-4 text-xs text-muted">{formatDate(p.date)}</p>
-              </Link>
+        <Container className="grid gap-5 lg:grid-cols-12">
+          <Reveal className="lg:col-span-7">
+            <Link href={`/insights/${first.slug}`} className="group flex h-full min-h-[360px] flex-col justify-between rounded-3xl bg-navy-900 p-8 text-white shadow-2xl transition-all duration-300 hover:-translate-y-2 sm:p-10">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">Latest · {first.category}</p>
+                <h2 className="mt-6 text-3xl font-bold leading-tight sm:text-4xl">{first.title}</h2>
+                <p className="mt-4 max-w-md text-white/75">{first.summary}</p>
+              </div>
+              <p className="mt-10 text-sm font-semibold text-sky-300">{formatDate(first.date)} · Read article <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">→</span></p>
+            </Link>
+          </Reveal>
+          <div className="grid gap-5 lg:col-span-5">
+            {rest.map((p, i) => (
+              <Reveal key={p.slug} delay={(i + 1) * 100}>
+                <Link href={`/insights/${p.slug}`} className="group block h-full">
+                  <Glass className="flex h-full flex-col justify-between p-7 transition-all duration-300 group-hover:-translate-y-2 group-hover:bg-white group-hover:shadow-2xl">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-navy-600">{p.category}</p>
+                      <h3 className="mt-3 text-xl font-bold leading-snug text-navy-900">{p.title}</h3>
+                      <p className="mt-2 text-sm text-muted">{p.summary}</p>
+                    </div>
+                    <p className="mt-5 text-xs text-muted">{formatDate(p.date)} · <span className="font-semibold text-navy-600">Read <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span></span></p>
+                  </Glass>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
       </Section>
       <Section tone="ice">
         <Container>
-          <SectionTitle eyebrow="Resources" title="Guides and reports" />
-          <div className="mt-6"><EmptyNote>Downloadable guides and reports will be available here.</EmptyNote></div>
+          <SectionTitle eyebrow="Resources" title="Guides and" accent="reports." />
+          <div className="mt-8"><EmptyNote>Downloadable guides and reports will be available here.</EmptyNote></div>
         </Container>
       </Section>
       <CallToAction />
