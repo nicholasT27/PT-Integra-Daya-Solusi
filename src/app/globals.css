@@ -109,3 +109,34 @@ h1, h2, h3 {
 @keyframes qxTilt { 0%, 100% { transform: rotate(-6deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-10px); } }
 .tilt { animation: qxTilt 6s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .drift, .tilt { animation: none; } }
+
+/* Extra motion for the photo-free hero designs. */
+@keyframes qxMesh { from { background-position: 0% 0%; } to { background-position: 100% 100%; } }
+.mesh {
+  background:
+    radial-gradient(40% 50% at 20% 30%, rgba(0, 58, 242, 0.22), transparent 70%),
+    radial-gradient(35% 45% at 80% 20%, rgba(169, 191, 255, 0.75), transparent 70%),
+    radial-gradient(45% 55% at 60% 95%, rgba(47, 95, 245, 0.22), transparent 70%),
+    #ffffff;
+  background-size: 170% 170%;
+  animation: qxMesh 22s ease-in-out infinite alternate;
+}
+@keyframes qxShine { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
+.shine-text {
+  background-image: linear-gradient(90deg, #003af2, #6f93ff, #002070, #003af2);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: qxShine 6s linear infinite;
+}
+@keyframes qxDrawLoop {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  55% { stroke-dashoffset: 0; opacity: 1; }
+  85% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+.draw-loop { stroke-dasharray: 1; animation: qxDrawLoop 5s ease-in-out infinite; }
+@keyframes qxBlink { 50% { opacity: 0.25; } }
+.blink { animation: qxBlink 1s step-end infinite; }
+@media (prefers-reduced-motion: reduce) { .mesh, .shine-text, .draw-loop, .blink { animation: none; } .draw-loop { stroke-dashoffset: 0; } }
