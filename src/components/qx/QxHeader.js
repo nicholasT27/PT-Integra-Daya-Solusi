@@ -8,7 +8,7 @@ import { navLinks } from "@/lib/site";
 
 // The top menu for this design: clear over the photo at first, then a white bar with a filled
 // "current page" pill once you scroll. On phones it opens a full-screen menu.
-export default function QxHeader() {
+export default function QxHeader({ onLight = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,12 +24,12 @@ export default function QxHeader() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const solid = scrolled && !open;
+  const solid = (scrolled || onLight) && !open;
   const links = navLinks.filter((l) => l.href !== "/portfolio" && l.href !== "/careers");
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3">
-      <div className={`mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-300 ${solid ? "bg-white shadow-lg" : "bg-transparent"}`}>
+      <div className={`mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-300 ${scrolled && !open ? "bg-white shadow-lg" : "bg-transparent"}`}>
         <Link href="/" onClick={() => setOpen(false)} aria-label="Home"><Logo light={!solid} /></Link>
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
           {links.map((l, i) => (

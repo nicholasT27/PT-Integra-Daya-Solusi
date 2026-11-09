@@ -102,3 +102,10 @@ h1, h2, h3 {
 @media (prefers-reduced-motion: reduce) {
   .marquee, .orbit, .orbit-rev, .orbit-slow, .float { animation: none; }
 }
+
+/* Slowly drifting colour glows behind light hero designs. */
+@keyframes qxDrift { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(50px, -40px) scale(1.18); } }
+.drift { animation: qxDrift 18s ease-in-out infinite; }
+@keyframes qxTilt { 0%, 100% { transform: rotate(-6deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-10px); } }
+.tilt { animation: qxTilt 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .drift, .tilt { animation: none; } }

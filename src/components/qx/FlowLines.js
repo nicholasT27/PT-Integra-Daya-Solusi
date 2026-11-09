@@ -8,9 +8,9 @@ const curves = [
   "M-50 540 C 400 640, 600 400, 900 520 S 1250 700, 1500 560",
 ];
 
-export default function FlowLines({ className = "", opacity = 1 }) {
+export default function FlowLines({ className = "", opacity = 1, color = "white" }) {
   return (
-    <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" className={`pointer-events-none absolute inset-0 h-full w-full ${className}`} style={{ opacity }} fill="none" stroke="white" aria-hidden="true">
+    <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" className={`pointer-events-none absolute inset-0 h-full w-full ${className}`} style={{ opacity }} fill="none" stroke={color} aria-hidden="true">
       {curves.map((d, i) => (
         <g key={i}>
           <path d={d} pathLength="1" strokeWidth="1.5" strokeOpacity="0.16" vectorEffect="non-scaling-stroke" />
