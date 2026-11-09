@@ -244,3 +244,23 @@ export function DrawLine({ className = "bg-current", delay = 0 }) {
     />
   );
 }
+
+// A thin line down the left edge of the screen that fills as you scroll down the page.
+export function ScrollLine() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    function update() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setP(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+  return (
+    <div className="pointer-events-none fixed bottom-0 left-4 top-0 z-40 hidden w-px bg-sky-300/25 xl:block" aria-hidden="true">
+      <div className="h-full w-full origin-top bg-sky-300" style={{ transform: `scaleY(${p})` }} />
+      <span className="absolute -left-[3px] h-[7px] w-[7px] rounded-full bg-white shadow" style={{ top: `calc(${p * 100}% - 4px)` }} />
+    </div>
+  );
+}

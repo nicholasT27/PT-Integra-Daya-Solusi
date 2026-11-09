@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowButton, DetailTab } from "@/components/quinn/Bits";
 import RevealText from "@/components/quinn/RevealText";
-import { Reveal, ParallaxBg, TestimonialSlider, DrawLine } from "@/components/quinn/Interactive";
-import LogoDraw from "./LogoDraw";
+import { Reveal, ParallaxBg, TestimonialSlider, DrawLine, ScrollLine } from "@/components/quinn/Interactive";
+import FlowLines from "./FlowLines";
 import QxHeader from "./QxHeader";
 import QxFooter from "./QxFooter";
 import ValueGrid from "./ValueGrid";
@@ -18,10 +18,10 @@ const themes = {
   j: {
     page: "bg-white text-ink", accent: "text-navy-600", soft: "text-muted", line: "border-navy-900/15", title: "text-navy-900",
     draw: true,
-    heroBg: "photo", heroOverlay: "bg-navy-600/55", folder: "bg-navy-600", folderVar: "var(--color-navy-600)", folderText: "text-white", tabText: "text-white", dot: "bg-white",
-    h1: "text-white", p: "text-white/85", btn: "white",
+    heroBg: "flow", heroOverlay: "", folder: "bg-ice-50", folderVar: "var(--color-ice-50)", folderText: "text-navy-900", tabText: "text-navy-600", dot: "bg-navy-600",
+    h1: "text-navy-900", p: "text-muted", btn: "blue",
     services: "rows", hoverRow: "hover:bg-ice-50",
-    aboutBg: "photo", aboutCard: "bg-navy-900 text-white", aboutHead: "text-white", aboutP: "text-white/80", aboutTab: "text-sky-300", aboutBtn: "white",
+    aboutBg: "flow", aboutCard: "bg-navy-900 text-white", aboutHead: "text-white", aboutP: "text-white/80", aboutTab: "text-sky-300", aboutBtn: "white",
     valueHead: "text-navy-900", valueP: "text-muted",
     cards: [
       { color: "bg-sky-300", card: "bg-navy-600", ink: "text-white", sub: "text-white/80" },
@@ -31,7 +31,7 @@ const themes = {
     ],
     testiFolder: "bg-ice-100", testiVar: "var(--color-ice-100)", testiText: "text-navy-900", testiTab: "text-navy-600", testiDot: "bg-navy-600", testiDark: false, quote: "text-navy-600",
     insight: "bg-ice-50 text-ink", insightP: "text-muted", insightTone: "blue", insightCard: "bg-navy-900 text-white", insightTab: "text-sky-300",
-    cta: "bg-navy-600 text-white", ctaTab: "text-sky-300", ctaBtn: "white", ctaPattern: false,
+    cta: "bg-navy-600 text-white", ctaTab: "text-sky-300", ctaBtn: "white", ctaPattern: false, ctaFlow: true,
   },
   // K: fully dark, sticky statement beside the service list
   k: {
@@ -106,21 +106,29 @@ export default function QxVariant({ v = "j" }) {
   return (
     <div className={t.page}>
       <QxHeader />
+      {t.draw && <ScrollLine />}
 
       {/* 1. Hero */}
-      <section className={`relative isolate flex min-h-screen items-end overflow-hidden ${t.heroBg === "pattern" ? "bg-navy-600" : "bg-navy-900"}`}>
-        {t.heroBg === "photo" ? (
+      <section className={`relative isolate flex ${t.heroBg === "flow" ? "min-h-[max(100vh,880px)]" : "min-h-screen"} items-end overflow-hidden ${t.heroBg === "photo" ? "bg-navy-900" : "bg-navy-600"}`}>
+        {t.heroBg === "photo" && (
           <>
             <div className="qx-bg absolute inset-0 -z-20"><ParallaxBg src="/brand/skyscrapers.jpg" /></div>
             <div className={`absolute inset-0 -z-10 ${t.heroOverlay}`} />
-            {t.draw && (
-              <div className="pointer-events-none absolute inset-x-0 top-[12vh] -z-10 mx-auto w-[min(92%,1100px)]">
-                <LogoDraw className="w-full" />
-              </div>
-            )}
           </>
-        ) : (
-          <div className="qx-bg absolute inset-0 -z-10"><Pattern opacity={0.16} /></div>
+        )}
+        {t.heroBg === "pattern" && <div className="qx-bg absolute inset-0 -z-10"><Pattern opacity={0.16} /></div>}
+        {t.heroBg === "flow" && (
+          <>
+            <div className="qx-bg absolute inset-0 -z-10"><FlowLines /></div>
+            {/* The photo is shown at or below its real size, so it stays sharp. */}
+            <div className="qx-1 pointer-events-none absolute inset-x-0 top-28 hidden lg:block">
+              <div className={wrap}>
+                <div className="relative ml-auto aspect-[736/437] w-full max-w-[560px] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/30">
+                  <Image src="/brand/skyscrapers.jpg" alt="Glass office towers seen from below" fill unoptimized sizes="560px" className="object-cover" priority />
+                </div>
+              </div>
+            </div>
+          </>
         )}
         <div className={wrap}>
           <div className="qx-folder" style={{ "--folder-color": t.folderVar }}>
@@ -169,15 +177,15 @@ export default function QxVariant({ v = "j" }) {
 
       {/* 3. About: background stays in place while the card scrolls over it */}
       <section className="relative">
-        <div className={`sticky top-0 h-screen overflow-hidden ${t.aboutBg === "pattern" ? "bg-navy-900" : ""}`}>
-          {t.aboutBg === "photo" ? (
+        <div className={`sticky top-0 h-screen overflow-hidden ${t.aboutBg === "photo" ? "" : t.aboutBg === "flow" ? "bg-navy-600" : "bg-navy-900"}`}>
+          {t.aboutBg === "photo" && (
             <>
               <Image src="/brand/skyscrapers.jpg" alt="Glass office towers" fill className="object-cover" />
               <div className="absolute inset-0 bg-navy-900/40" />
             </>
-          ) : (
-            <Pattern opacity={0.22} />
           )}
+          {t.aboutBg === "pattern" && <Pattern opacity={0.22} />}
+          {t.aboutBg === "flow" && <FlowLines />}
         </div>
         <div className="relative -mt-[100vh] min-h-[170vh] px-5 py-[20vh] sm:px-8">
           <div className={`sticky top-[18vh] max-w-xl rounded-3xl p-8 shadow-2xl sm:p-12 ${v === "k" ? "" : "ml-auto"} ${t.aboutCard}`}>
@@ -240,7 +248,7 @@ export default function QxVariant({ v = "j" }) {
                 <p className={`text-sm font-semibold ${t.insightTab}`}>Read article <span className="inline-block transition-transform group-hover:translate-x-2">→</span></p>
               </div>
               <div className="relative min-h-[260px] overflow-hidden lg:col-span-4">
-                <Image src="/brand/skyscrapers.jpg" alt="" fill className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+                <Image src="/brand/skyscrapers.jpg" alt="" fill unoptimized className="object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
                 <div className="absolute inset-0 bg-navy-600/30 mix-blend-multiply" />
               </div>
             </Link>
@@ -251,7 +259,8 @@ export default function QxVariant({ v = "j" }) {
       {/* 7. Closing call to action */}
       <section className={`relative isolate overflow-hidden ${t.cta}`}>
         {t.ctaPattern && <Pattern opacity={0.14} />}
-        <div className="grid lg:grid-cols-2">
+        {t.ctaFlow && <FlowLines />}
+        <div className="relative grid lg:grid-cols-2">
           <div className="flex flex-col justify-between gap-16 px-5 py-24 sm:px-12 lg:px-[max(3rem,calc((100vw-72rem)/2+2rem))]">
             <Reveal>
               <DetailTab className={t.ctaTab}>Contact PT Integra Daya Solusi</DetailTab>
@@ -259,10 +268,18 @@ export default function QxVariant({ v = "j" }) {
             </Reveal>
             <Reveal><ArrowButton href="/contact" tone={t.ctaBtn}>Contact us</ArrowButton></Reveal>
           </div>
-          <div className="relative min-h-[420px]">
-            <Image src="/brand/skyscrapers.jpg" alt="" fill className="object-cover" />
-            <div className="absolute inset-0 bg-navy-600/30 mix-blend-multiply" />
-          </div>
+          {t.ctaFlow ? (
+            <div className="flex items-center justify-center px-5 pb-24 lg:py-24 lg:pr-12">
+              <div className="relative aspect-[736/437] w-full max-w-[640px] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/30">
+                <Image src="/brand/skyscrapers.jpg" alt="" fill unoptimized sizes="640px" className="object-cover" />
+              </div>
+            </div>
+          ) : (
+            <div className="relative min-h-[420px]">
+              <Image src="/brand/skyscrapers.jpg" alt="" fill className="object-cover" />
+              <div className="absolute inset-0 bg-navy-600/30 mix-blend-multiply" />
+            </div>
+          )}
         </div>
       </section>
 
