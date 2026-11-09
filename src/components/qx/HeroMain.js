@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowButton } from "@/components/quinn/Bits";
-import HeroVisual from "./HeroVisual";
+import HeroPhoto from "./HeroPhoto";
 
 // Keeps the headline word and the picture in step: moves to the next word every few seconds, and loops back to the
 // start without a visible jump. "i" is the position (it goes one past the end before wrapping), "anim" says whether to animate.
@@ -60,8 +60,7 @@ function WordSwap({ words, i, anim }) {
 
 // The main hero. Its background (glows, lines, cursor glow) is the page-wide backdrop, so this only holds the
 // headline, whose words drift a little as the mouse moves. On touch screens the drift wanders by itself.
-// "Visual" is the picture shown beside the headline. It receives "active", the position of the current word.
-export default function HeroMain({ Visual = HeroVisual }) {
+export default function HeroMain() {
   const ref = useRef(null);
 
   function setPointer(x, y) {
@@ -140,7 +139,7 @@ export default function HeroMain({ Visual = HeroVisual }) {
           <Link href="/services" className="inline-flex items-center rounded-full border border-navy-900/20 bg-white/60 px-7 py-3 text-sm font-semibold text-navy-900 hover:bg-white">Our services</Link>
         </div>
         </div>
-        <div className="pb-6 lg:col-span-5"><Visual active={cycle.i % swapWords.length} /></div>
+        <div className="pb-6 lg:col-span-5"><HeroPhoto active={cycle.i % swapWords.length} /></div>
       </div>
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-navy-600" aria-hidden="true">
         Scroll <span className="nudge text-base">↓</span>

@@ -22,3 +22,4 @@ npm run lint     # code checks
 - `public/brand/`: the official IDS logo files (blue and white) and the brand photo. The photo is low resolution, so it is not used on the pages right now.
 - `src/components/qx/`: the menu, footer, home page hero and the scroll-animated home page sections.
 - `src/app/`: one folder per page (about, services, portfolio, insights, careers, contact).
+- `public/photos/`: put the real photos for the home page picture here (see `heroPhotos` in `src/lib/site.js`). Use five files of at least 900 px wide, roughly square or 4:5.
