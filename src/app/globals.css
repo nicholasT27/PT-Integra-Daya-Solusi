@@ -140,3 +140,10 @@ h1, h2, h3 {
 @keyframes qxBlink { 50% { opacity: 0.25; } }
 .blink { animation: qxBlink 1s step-end infinite; }
 @media (prefers-reduced-motion: reduce) { .mesh, .shine-text, .draw-loop, .blink { animation: none; } .draw-loop { stroke-dashoffset: 0; } }
+
+/* Floating motion for the tilting cards. */
+@keyframes qxBob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -9px; } }
+.bob { animation: qxBob 5s ease-in-out infinite; }
+@keyframes qxNudge { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(8px); opacity: 1; } }
+.nudge { animation: qxNudge 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .bob, .nudge { animation: none; } }
