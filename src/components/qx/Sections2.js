@@ -11,12 +11,12 @@ import { services } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-const keys = ["Risk", "Insurance", "Retirement", "Legal", "Tax", "Industrial"];
+export const keys = ["Risk", "Insurance", "Retirement", "Legal", "Tax", "Industrial"];
 const statement = "Sophisticated enough for high-stakes decisions. Nimble enough for everyday clarity. Our complete range of services is tailored to your goals to reduce risk, cut friction and give you confidence in every decision.";
 
 // The background every design shares with the hero: drifting glows, flowing lines, and a glow plus
 // dot pattern that follow the cursor. It makes the second section feel like a continuation of the first.
-function Shell({ tag, id, children }) {
+export function Shell({ tag, id, children }) {
   const ref = useRef(null);
   function onMove(e) {
     const r = ref.current.getBoundingClientRect();
