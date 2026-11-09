@@ -21,9 +21,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${jakarta.variable} antialiased`}>
       <body className="flex min-h-screen flex-col">
-        <HideOn paths={["/concepts/i", "/concepts/j", "/concepts/k", "/concepts/l", "/concepts/heroes", "/concepts/heroes2", "/concepts/heroes3", "/concepts/heroes4"]}><Header /></HideOn>
+        <HideOn paths={["/concepts/i", "/concepts/j", "/concepts/k", "/concepts/l", "/concepts/heroes", "/concepts/heroes2", "/concepts/heroes3", "/concepts/heroes4", "/concepts/hero-main"]}><Header /></HideOn>
         <main className="flex-1">{children}</main>
-        <HideOn paths={["/concepts/i", "/concepts/j", "/concepts/k", "/concepts/l", "/concepts/heroes", "/concepts/heroes2", "/concepts/heroes3", "/concepts/heroes4"]}><Footer /></HideOn>
+        <HideOn paths={["/concepts/i", "/concepts/j", "/concepts/k", "/concepts/l", "/concepts/heroes", "/concepts/heroes2", "/concepts/heroes3", "/concepts/heroes4", "/concepts/hero-main"]}><Footer /></HideOn>
       </body>
     </html>
   );
