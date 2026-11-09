@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { ArrowButton, DetailTab } from "@/components/quinn/Bits";
-import { Reveal, CountUp } from "@/components/quinn/Interactive";
+import { Reveal } from "@/components/quinn/Interactive";
 import { company } from "@/lib/site";
 
 // The brand photo. It is only 736 px wide, so it is always shown smaller than that to stay sharp.
@@ -27,12 +27,7 @@ function Info() {
         </p>
       </Reveal>
       <Reveal delay={240}>
-        <dl className="mt-8 grid max-w-lg grid-cols-3 gap-4 border-t border-navy-900/15 pt-6">
-          <div><dd className="text-4xl font-bold text-navy-600"><CountUp to={6} /></dd><dt className="mt-1 text-xs text-muted">Specialist services</dt></div>
-          <div><dd className="text-4xl font-bold text-navy-600"><CountUp to={1} /></dd><dt className="mt-1 text-xs text-muted">Integrated team</dt></div>
-          <div><dd className="text-4xl font-bold text-navy-600"><CountUp to={3} /></dd><dt className="mt-1 text-xs text-muted">Core pillars</dt></div>
-        </dl>
-        <p className="mt-6 text-sm leading-relaxed text-muted"><strong className="text-navy-900">Our office.</strong> {company.addressLines[0]}, {company.addressLines[1].split(",")[0]}, {company.addressLines[2]}.</p>
+        <p className="mt-8 border-t border-navy-900/15 pt-6 text-sm leading-relaxed text-muted"><strong className="text-navy-900">Our office.</strong> {company.addressLines[0]}, {company.addressLines[1].split(",")[0]}, {company.addressLines[2]}.</p>
         <div className="mt-8"><ArrowButton href="/about">About us</ArrowButton></div>
       </Reveal>
     </div>
