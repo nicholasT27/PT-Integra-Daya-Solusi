@@ -88,3 +88,17 @@ h1, h2, h3 {
 @media (prefers-reduced-motion: reduce) {
   .flow-line { animation: none; stroke-dasharray: none; opacity: 0.5; }
 }
+
+/* Endless motion helpers for the hero designs. */
+@keyframes qxMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes qxSpin { to { transform: rotate(360deg); } }
+@keyframes qxFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.marquee { width: max-content; animation: qxMarquee 45s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+.orbit { animation: qxSpin 70s linear infinite; }
+.orbit-rev { animation: qxSpin 70s linear infinite reverse; }
+.orbit-slow { animation: qxSpin 110s linear infinite reverse; }
+.float { animation: qxFloat 5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee, .orbit, .orbit-rev, .orbit-slow, .float { animation: none; }
+}
