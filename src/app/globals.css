@@ -38,3 +38,17 @@ body {
 h1, h2, h3 {
   letter-spacing: -0.02em;
 }
+
+/* The tab on top of the "folder" card in the hero. The small curve joins the tab to the card. */
+.folder-tab {
+  position: relative;
+}
+.folder-tab::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 100% 0, transparent 19.5px, var(--folder-color) 20px);
+}
