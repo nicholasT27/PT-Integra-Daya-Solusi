@@ -84,9 +84,6 @@ export default function AiryHome() {
           </Reveal>
         </div>
       </section>
-
-      {/* A long soft fade, so the page eases into the dark footer instead of ending on a hard edge */}
-      <div aria-hidden="true" className="h-56 bg-gradient-to-b from-transparent to-navy-950" />
     </div>
   );
 }

@@ -4,13 +4,13 @@ import { company, navLinks, services } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 
-// The bottom of every page: the company, the services, the pages and how to reach us, on a dark navy background.
+// The bottom of every page: the company, the services, the pages and how to reach us, on a dark navy panel with rounded top corners.
 // It sits above the home page's soft background (relative z-10) so the background never paints over it.
 export default function QxFooter() {
   const head = "text-xs font-semibold uppercase tracking-[0.2em] text-sky-300";
   const link = "text-white/75 transition-colors hover:text-white";
   return (
-    <footer className="relative z-10 bg-navy-950 pt-16 text-white">
+    <footer className="relative z-10 rounded-t-[2.5rem] bg-navy-950 pt-16 text-white shadow-[0_-30px_60px_-30px_rgba(0,32,112,0.35)]">
       <div className={`${wrap} grid gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-4`}>
         <div>
           <Image src="/brand/ids-mark-white.svg" alt="PT Integra Daya Solusi" width={160} height={54} className="w-24" />
