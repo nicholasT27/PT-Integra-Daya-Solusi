@@ -26,7 +26,7 @@ export function SectionTitle({ eyebrow, title, text, center = false }) {
 // The dark blue banner at the top of inner pages with the page title.
 export function PageHeader({ eyebrow, title, text }) {
   return (
-    <div className="bg-grid bg-navy-900 py-20 text-white">
+    <div className="bg-grid bg-navy-900 pb-20 pt-36 text-white">
       <Container>
         {eyebrow && <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">{eyebrow}</p>}
         <h1 className="mt-3 max-w-3xl font-serif text-4xl font-semibold sm:text-5xl">{title}</h1>

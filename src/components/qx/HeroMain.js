@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowButton } from "@/components/quinn/Bits";
@@ -11,7 +10,7 @@ const shift = (k) => ({ transform: `translate(calc(var(--mx, 0) * ${k * 28}px), 
 const cursorMask = (r) => `radial-gradient(${r}px circle at var(--px) var(--py), black, transparent 70%)`;
 
 // The main hero: a bright, airy page that reacts to the mouse. A glow and a dot pattern follow the cursor,
-// the lines brighten near it, layers drift at different speeds, and the small photo tilts towards it.
+// the lines brighten near it, and layers drift at different speeds.
 // On touch screens, where there is no mouse, a soft glow wanders by itself.
 export default function HeroMain() {
   const ref = useRef(null);
@@ -41,8 +40,7 @@ export default function HeroMain() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  const lead = ["Risk,"];
-  const rest = ["insurance", "and", "business", "advice,"];
+  const words = ["Risk,", "insurance", "and", "business", "advice,"];
   const accent = ["brought", "together."];
   const word = (w, i, cls = "") => (
     <span key={w} className={`inline-block ${cls}`} style={{ transform: `translate(calc(var(--mx, 0) * ${((i % 3) - 1) * 6}px), calc(var(--my, 0) * ${((i % 2) - 0.5) * 6}px))`, transition: "transform 0.5s ease-out" }}>
@@ -84,14 +82,7 @@ export default function HeroMain() {
         </p>
 
         <h1 className="mt-6 max-w-5xl text-5xl font-bold leading-[1.1] text-navy-900 sm:text-7xl">
-          {lead.map((w, i) => word(w, i))}
-          {/* The small photo, shown well below its real size so it stays sharp. It tilts towards the cursor. */}
-          <span className="mx-1 inline-block align-middle" style={{ transform: "perspective(500px) rotateY(calc(var(--mx, 0) * 16deg)) rotateX(calc(var(--my, 0) * -12deg))", transition: "transform 0.35s ease-out" }}>
-            <span className="tilt relative block h-[0.9em] w-[1.7em] overflow-hidden rounded-full shadow-xl ring-4 ring-white">
-              <Image src="/brand/skyscrapers.jpg" alt="" fill unoptimized sizes="140px" className="object-cover" />
-            </span>
-          </span>{" "}
-          {rest.map((w, i) => word(w, i + 1))}
+          {words.map((w, i) => word(w, i))}
           {accent.map((w, i) => word(w, i + 5, "text-navy-600"))}
         </h1>
 
@@ -102,6 +93,9 @@ export default function HeroMain() {
           <ArrowButton href="/contact">Contact us</ArrowButton>
           <Link href="/services" className="inline-flex items-center rounded-full border border-navy-900/20 bg-white/60 px-7 py-3 text-sm font-semibold text-navy-900 hover:bg-white">Our services</Link>
         </div>
+      </div>
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-navy-600" aria-hidden="true">
+        Scroll <span className="nudge text-base">↓</span>
       </div>
     </section>
   );

@@ -1,8 +1,7 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import HideOn from "@/components/HideOn";
+import QxHeader from "@/components/qx/QxHeader";
+import QxFooter from "@/components/qx/QxFooter";
 
 // The brand font (Plus Jakarta Sans) used for all text on the site.
 const jakarta = Plus_Jakarta_Sans({ variable: "--font-jakarta", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
@@ -21,9 +20,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${jakarta.variable} antialiased`}>
       <body className="flex min-h-screen flex-col">
-        <HideOn paths={["/concepts/i", "/concepts/j", "/concepts/k", "/concepts/l", "/concepts/heroes", "/concepts/heroes2", "/concepts/heroes3", "/concepts/heroes4", "/concepts/hero-main"]}><Header /></HideOn>
+        <QxHeader />
         <main className="flex-1">{children}</main>
-        <HideOn paths={["/concepts/i", "/concepts/j", "/concepts/k", "/concepts/l", "/concepts/heroes", "/concepts/heroes2", "/concepts/heroes3", "/concepts/heroes4", "/concepts/hero-main"]}><Footer /></HideOn>
+        <QxFooter />
       </body>
     </html>
   );

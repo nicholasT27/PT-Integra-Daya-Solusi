@@ -19,5 +19,6 @@ npm run lint     # code checks
 - `src/lib/site.js`: company address, phone numbers, services, articles, FAQs and menu.
   The history, leadership, projects, testimonials and job openings in that file are SAMPLE content for the client demo and must be replaced with real details.
   Set `company.email` there to make the contact form open an email draft.
-- `src/components/Logo.js`: placeholder logo. Swap in the official logo file when available.
+- `public/brand/`: the official IDS logo files (blue and white) and the brand photo. The photo is low resolution, so it is not used on the pages right now.
+- `src/components/qx/`: the menu, footer, home page hero and the scroll-animated home page sections.
 - `src/app/`: one folder per page (about, services, portfolio, insights, careers, contact).
