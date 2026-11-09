@@ -2,12 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import { DetailTab, ArrowButton } from "@/components/quinn/Bits";
-import RevealText from "@/components/quinn/RevealText";
 import { Reveal, CountUp, TestimonialSlider } from "@/components/quinn/Interactive";
 import HeroMain from "./HeroMain";
 import ValueGrid from "./ValueGrid";
 import FlowLines from "./FlowLines";
-import { ServiceScroll, AboutScene, ScrollShift } from "./ScrollBits";
+import ServicesWired from "./ServicesWired";
+import { AboutScene, ScrollShift } from "./ScrollBits";
 import { services, posts, testimonials } from "@/lib/site";
 
 const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
@@ -32,18 +32,8 @@ export default function AiryHome() {
     <div className="bg-white text-ink">
       <HeroMain />
 
-      {/* What we offer */}
-      <section className="py-28">
-        <div className={wrap}>
-          <Reveal><DetailTab className="text-navy-600">What we offer.</DetailTab></Reveal>
-          <RevealText
-            className="mt-8 max-w-4xl indent-16 text-2xl font-semibold leading-snug text-navy-900 sm:text-4xl"
-            text="Sophisticated enough for high-stakes decisions. Nimble enough for everyday clarity. Our complete range of services is tailored to your goals to reduce risk, cut friction and give you confidence in every decision."
-          />
-          <div className="mt-20"><ServiceScroll services={services} /></div>
-          <Reveal className="mt-12"><ArrowButton href="/services">Explore services</ArrowButton></Reveal>
-        </div>
-      </section>
+      {/* What we offer: the six services wired to the logo */}
+      <ServicesWired />
 
       {/* About: the logo draws itself while you scroll */}
       <AboutScene paths={logo.paths} viewBox={logo.viewBox}>
