@@ -13,10 +13,10 @@ const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
 // The homepage: an airy hero that follows the mouse, then sections that come alive as you scroll.
 export default function AiryHome() {
   const stats = [
-    { big: <CountUp to={6} />, small: "Services", text: "Specialist disciplines under one roof", color: "bg-navy-600" },
-    { big: <CountUp to={1} />, small: "Team", text: "Insurance, legal, finance and engineering working together", color: "bg-sky-300" },
-    { big: <CountUp to={3} />, small: "Pillars", text: "Integration, collaboration and continuity", color: "bg-navy-900" },
-    { big: "JKT", small: "Based", text: "Menara MTH, Tebet, South Jakarta", color: "bg-ice-100" },
+    { big: <CountUp to={6} />, small: "Services", text: "Specialist disciplines under one roof", color: "bg-navy-600", fill: "bg-navy-600", light: true, more: ["Risk", "Insurance", "Retirement", "Legal", "Tax", "Industrial"] },
+    { big: <CountUp to={1} />, small: "Team", text: "Insurance, legal, finance and engineering working together", color: "bg-sky-300", fill: "bg-navy-900", light: true, more: ["Insurance", "Legal", "Finance", "Engineering"] },
+    { big: <CountUp to={3} />, small: "Pillars", text: "Integration, collaboration and continuity", color: "bg-navy-900", fill: "bg-sky-300", light: false, more: ["Integrasi", "Kolaborasi", "Kesinambungan"] },
+    { big: "JKT", small: "Based", text: "Menara MTH, Tebet, South Jakarta", color: "bg-ice-100", fill: "bg-navy-600", light: true, more: ["Lantai 15, Suite 1508", "Tebet Timur"], clock: true },
   ];
 
   return (
