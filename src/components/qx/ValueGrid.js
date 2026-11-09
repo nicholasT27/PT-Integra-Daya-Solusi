@@ -78,7 +78,7 @@ function ValueCard({ big, small, text, color, tall, fill, light, more, clock, op
         {/* A light that follows the cursor */}
         <span className="pointer-events-none absolute inset-0 transition-opacity duration-300" style={{ opacity: open ? 1 : 0, background: `radial-gradient(260px circle at var(--gx) var(--gy), ${light ? "rgba(255,255,255,0.28)" : "rgba(0,58,242,0.14)"}, transparent 70%)` }} />
         <span className={`absolute inset-y-0 left-0 z-10 origin-top transition-[width] duration-500 ${open ? "w-3" : "w-2"} ${color}`} style={{ transform: `scaleY(${p})`, transformOrigin: "top" }} />
-        <span className={`absolute right-6 top-6 z-10 flex h-7 w-7 items-center justify-center rounded-tr-lg border-r border-t text-sm transition-all duration-500 ${open ? `rotate-0 ${light ? "border-white/60 text-white" : "border-navy-600 text-navy-600"}` : "border-navy-900/20 text-transparent"}`} aria-hidden="true">{open ? "↗" : ""}</span>
+        <span className={`absolute right-6 top-6 z-10 h-7 w-7 rounded-tr-lg border-r border-t transition-colors duration-500 ${open ? (light ? "border-white/60" : "border-navy-600") : "border-navy-900/20"}`} aria-hidden="true" />
 
         <div className={`relative z-10 text-5xl font-semibold leading-[1.1] tracking-tight transition-colors duration-500 sm:text-6xl lg:text-[2.7rem] ${ink}`}>
           {big}<br />{small}
