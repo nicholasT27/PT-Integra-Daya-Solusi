@@ -9,30 +9,6 @@ export function DetailTab({ children, className = "" }) {
   );
 }
 
-// A band of small coloured squares used to separate sections.
-export function TileBand() {
-  const cols = [
-    ["bg-navy-600", "bg-sky-300"],
-    ["bg-navy-900", "bg-navy-600"],
-    ["bg-ice-100", "bg-navy-900"],
-    ["bg-navy-600", "bg-navy-800"],
-    ["bg-sky-300", "bg-ice-100"],
-    ["bg-navy-800", "bg-navy-600"],
-    ["bg-navy-600", "bg-navy-900"],
-    ["bg-ice-100", "bg-sky-300"],
-  ];
-  return (
-    <div className="grid grid-cols-4 sm:grid-cols-8" aria-hidden="true">
-      {cols.map((c, i) => (
-        <div key={i} className={`flex-col ${i > 3 ? "hidden sm:flex" : "flex"}`}>
-          <div className={`h-8 sm:h-10 ${c[0]}`} />
-          <div className={`h-8 sm:h-10 ${c[1]}`} />
-        </div>
-      ))}
-    </div>
-  );
-}
-
 // A pill button with an arrow that slides across when you hover over it.
 export function ArrowButton({ href, children, tone = "blue" }) {
   const styles = {
