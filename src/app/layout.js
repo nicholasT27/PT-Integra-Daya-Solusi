@@ -2,7 +2,6 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import QxHeader from "@/components/qx/QxHeader";
 import QxFooter from "@/components/qx/QxFooter";
-import HideOnPaths from "@/components/qx/HideOnPaths";
 
 // The brand font (Plus Jakarta Sans) used for all text on the site.
 const jakarta = Plus_Jakarta_Sans({ variable: "--font-jakarta", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
@@ -23,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className="flex min-h-screen flex-col">
         <QxHeader />
         <main className="flex-1">{children}</main>
-        <HideOnPaths paths={["/concepts/footer"]}><QxFooter /></HideOnPaths>
+        <QxFooter />
       </body>
     </html>
   );

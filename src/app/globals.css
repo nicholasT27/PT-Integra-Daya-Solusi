@@ -155,7 +155,3 @@ h1, h2, h3 {
 
 /* A progress bar that fills over seven seconds, used to show when the next testimonial arrives. */
 @keyframes grow7 { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-
-/* The solid half of the spotlight slogan lights up around the cursor. On touch screens, which have no cursor, it is always solid. */
-.spot-fill { mask-image: radial-gradient(260px circle at var(--px, -400px) var(--py, -400px), black, transparent 72%); -webkit-mask-image: radial-gradient(260px circle at var(--px, -400px) var(--py, -400px), black, transparent 72%); }
-@media (hover: none) { .spot-fill { mask-image: none !important; -webkit-mask-image: none !important; } }

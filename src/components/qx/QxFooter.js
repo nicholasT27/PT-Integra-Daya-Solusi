@@ -1,28 +1,45 @@
+import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/components/Logo";
-import { company, navLinks } from "@/lib/site";
+import { company, navLinks, services } from "@/lib/site";
 
-// The bottom of this design: a giant slogan, the logo, links and contact details.
+const wrap = "mx-auto w-full max-w-6xl px-5 sm:px-8";
+
+// The bottom of every page: the company, the services, the pages and how to reach us, on a dark navy background.
+// It sits above the home page's soft background (relative z-10) so the background never paints over it.
 export default function QxFooter() {
+  const head = "text-xs font-semibold uppercase tracking-[0.2em] text-sky-300";
+  const link = "text-white/75 transition-colors hover:text-white";
   return (
-    <footer className="relative z-10 bg-navy-950 px-5 pb-8 pt-24 text-white sm:px-8">
-      <div className="mx-auto max-w-6xl">
-        <p className="text-[13vw] font-bold leading-[0.9] tracking-tight text-navy-600 lg:text-[9rem]">
-          Integrated.<br />Trusted.
-        </p>
-        <div className="mt-16 grid gap-10 border-t border-white/15 pt-10 md:grid-cols-3">
-          <Logo light />
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold" aria-label="Footer">
-            {navLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-sky-300">{l.label}</Link>
-            ))}
-          </nav>
-          <div className="text-sm leading-relaxed text-white/70">
-            {company.addressLines.map((l) => <span key={l} className="block">{l}</span>)}
-            <span className="mt-3 block">{company.phones.map((p) => p.label).join("  ·  ")}</span>
-          </div>
+    <footer className="relative z-10 bg-navy-950 pt-16 text-white">
+      <div className={`${wrap} grid gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-4`}>
+        <div>
+          <Image src="/brand/ids-mark-white.svg" alt="PT Integra Daya Solusi" width={160} height={54} className="w-24" />
+          <p className="mt-4 max-w-[16rem] text-sm leading-relaxed text-white/65">{company.tagline}</p>
         </div>
-        <p className="mt-12 text-xs text-white/50">© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+        <div>
+          <h3 className={head}>Services</h3>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            {services.map((s) => <li key={s.slug}><Link href={`/services/${s.slug}`} className={link}>{s.title}</Link></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 className={head}>Company</h3>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            {navLinks.filter((l) => l.href !== "/services").map((l) => <li key={l.href}><Link href={l.href} className={link}>{l.label}</Link></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 className={head}>Contact</h3>
+          <address className="mt-4 text-sm not-italic leading-relaxed text-white/75">
+            {company.addressLines.map((l) => <span key={l} className="block">{l}</span>)}
+          </address>
+          <p className="mt-4 text-sm text-white/90">
+            {company.phones.map((p) => <a key={p.href} href={p.href} className="block hover:underline">{p.label}</a>)}
+          </p>
+        </div>
+      </div>
+      <div className="border-t border-white/10 py-6">
+        <p className={`${wrap} text-xs text-white/50`}>© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
       </div>
     </footer>
   );
