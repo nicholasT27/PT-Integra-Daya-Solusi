@@ -43,7 +43,7 @@ export function Button({ href, children, variant = "solid" }) {
       ? "bg-navy-600 text-white hover:bg-navy-500"
       : "border border-white/40 text-white hover:bg-white/10";
   return (
-    <Link href={href} className={`inline-flex items-center gap-2 rounded-md px-6 py-3 text-sm font-semibold transition-colors ${styles}`}>
+    <Link href={href} className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors ${styles}`}>
       {children} <Icon name="arrow" className="h-4 w-4" />
     </Link>
   );

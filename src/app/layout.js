@@ -1,10 +1,10 @@
-import { Inter, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
-const playfair = Playfair_Display({ variable: "--font-playfair", subsets: ["latin"] });
+// The brand font (Plus Jakarta Sans) used for all text on the site.
+const jakarta = Plus_Jakarta_Sans({ variable: "--font-jakarta", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
 export const metadata = {
   title: {
@@ -18,7 +18,7 @@ export const metadata = {
 // The frame around every page: top menu, page content and footer.
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} antialiased`}>
+    <html lang="en" className={`${jakarta.variable} antialiased`}>
       <body className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">{children}</main>

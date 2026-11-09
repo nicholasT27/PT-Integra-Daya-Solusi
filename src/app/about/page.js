@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { PageHeader, Container, Section, SectionTitle, CallToAction } from "@/components/Ui";
 import { values, company, history, leaders } from "@/lib/site";
@@ -86,6 +87,29 @@ export default function About() {
                 <p className="mt-3 text-sm leading-relaxed text-muted">{l.bio}</p>
               </div>
             ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="ice">
+        <Container className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="rounded-2xl bg-white p-12">
+            <Image src="/brand/ids-mark-blue.svg" alt="IDS logo" width={400} height={136} className="mx-auto w-full max-w-sm" />
+          </div>
+          <div>
+            <SectionTitle eyebrow="Our brand" title="The meaning behind our logo" />
+            <div className="mt-5 space-y-4 leading-relaxed text-muted">
+              <p>
+                Our logo joins the letters I, D and S into one connected form. It stands for integration, collaboration
+                and continuity of solutions across many fields of business.
+              </p>
+              <p>
+                Flowing lines and rounded corners express a professional, adaptable and humble company that builds
+                flexible yet trustworthy working relationships. The simple, solid structure reflects efficiency,
+                stability and readiness to deliver integrated, sustainable solutions.
+              </p>
+              <p>Blue was chosen to represent trust, professionalism and innovation.</p>
+            </div>
           </div>
         </Container>
       </Section>

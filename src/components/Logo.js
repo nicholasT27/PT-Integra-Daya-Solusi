@@ -1,22 +1,22 @@
-// Shows the company logo mark and name. Replace the mark with the official logo file when available.
-export default function Logo({ light = false }) {
-  const main = light ? "text-white" : "text-navy-900";
-  const sub = light ? "text-sky-300" : "text-navy-600";
+import Image from "next/image";
+
+// Shows the official IDS logo mark with the company name. Use light on dark backgrounds.
+export default function Logo({ light = false, stacked = false }) {
   return (
-    <span className="flex items-center gap-3">
-      <svg viewBox="0 0 40 40" className="h-10 w-10 shrink-0" aria-hidden="true">
-        <rect width="40" height="40" rx="9" fill={light ? "#ffffff" : "#0a2550"} />
-        <rect x="9" y="22" width="5" height="9" rx="1" fill={light ? "#0a2550" : "#9cc0f5"} />
-        <rect x="17.5" y="15" width="5" height="16" rx="1" fill={light ? "#1d52b8" : "#5b8fe8"} />
-        <rect x="26" y="8" width="5" height="23" rx="1" fill={light ? "#2f6fe0" : "#ffffff"} />
-      </svg>
-      <span className="leading-tight">
-        <span className={`block font-serif text-lg font-semibold ${main}`}>
-          <span className="text-sm font-normal">PT</span> Integra Daya Solusi
-        </span>
-        <span className={`block text-[10px] font-medium uppercase tracking-[0.14em] ${sub}`}>
-          Insurance · Risk · Engineering
-        </span>
+    <span className={`flex items-center ${stacked ? "flex-col gap-3" : "gap-3"}`}>
+      <Image
+        src={light ? "/brand/ids-mark-white.svg" : "/brand/ids-mark-blue.svg"}
+        alt=""
+        width={stacked ? 120 : 56}
+        height={stacked ? 41 : 19}
+        priority
+      />
+      <span
+        className={`text-[11px] font-medium uppercase tracking-[0.22em] ${light ? "text-white" : "text-ink"} ${
+          stacked ? "" : "hidden sm:block"
+        }`}
+      >
+        PT Integra Daya Solusi
       </span>
     </span>
   );
