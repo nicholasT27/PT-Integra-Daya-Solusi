@@ -155,3 +155,13 @@ h1, h2, h3 {
 
 /* A progress bar that fills over seven seconds, used to show when the next testimonial arrives. */
 @keyframes grow7 { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Small continuous motions used inside the hero illustrations. */
+@keyframes qxTick { to { transform: rotate(360deg); } }
+@keyframes qxTilt2 { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes qxRise { 0%, 100% { transform: scaleY(0.82); } 50% { transform: scaleY(1); } }
+.ill-spin { animation: qxTick 14s linear infinite; transform-box: fill-box; transform-origin: center; }
+.ill-spin-rev { animation: qxTick 9s linear infinite reverse; transform-box: fill-box; transform-origin: center; }
+.ill-tilt { animation: qxTilt2 4.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center top; }
+.ill-rise { animation: qxRise 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+@media (prefers-reduced-motion: reduce) { .ill-spin, .ill-spin-rev, .ill-tilt, .ill-rise { animation: none; } }
