@@ -60,7 +60,8 @@ function WordSwap({ words, i, anim }) {
 
 // The main hero. Its background (glows, lines, cursor glow) is the page-wide backdrop, so this only holds the
 // headline, whose words drift a little as the mouse moves. On touch screens the drift wanders by itself.
-export default function HeroMain() {
+// "Visual" is the picture shown beside the headline. It receives "active", the position of the current word.
+export default function HeroMain({ Visual = HeroVisual }) {
   const ref = useRef(null);
 
   function setPointer(x, y) {
@@ -100,7 +101,7 @@ export default function HeroMain() {
       id="hero-main"
       ref={ref}
       onMouseMove={onMove}
-      className="relative flex min-h-[max(100vh,800px)] items-center"
+      className="relative flex min-h-[max(100vh,800px)] items-center overflow-x-clip"
       data-tone="#ffffff"
       data-glow="1"
       style={{ "--mx": 0, "--my": 0 }}
@@ -139,7 +140,7 @@ export default function HeroMain() {
           <Link href="/services" className="inline-flex items-center rounded-full border border-navy-900/20 bg-white/60 px-7 py-3 text-sm font-semibold text-navy-900 hover:bg-white">Our services</Link>
         </div>
         </div>
-        <div className="pb-6 lg:col-span-5"><HeroVisual active={cycle.i % swapWords.length} /></div>
+        <div className="pb-6 lg:col-span-5"><Visual active={cycle.i % swapWords.length} /></div>
       </div>
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-navy-600" aria-hidden="true">
         Scroll <span className="nudge text-base">↓</span>

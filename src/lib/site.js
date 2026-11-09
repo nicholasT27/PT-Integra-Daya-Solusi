@@ -250,3 +250,15 @@ export const employeeStories = [
   { quote: "I learn something new on every project because I work next to specialists from other fields.", name: "Risk Surveyor, 3 years" },
   { quote: "Senior colleagues take the time to teach. I have grown a lot since joining.", name: "Accounting Associate, 2 years" },
 ];
+
+// The five pictures shown beside the home page headline, one for each word (insurance, retirement, legal, tax, engineering).
+// For now every entry uses the brand photo, cropped differently, as a stand-in. To use real photos, put the files in
+// public/photos/ and change each "src" (for example "/photos/insurance.jpg"), then set zoom to 1 and pos to "50% 50%".
+// Photos should be at least 900 px wide and roughly square or 4:5, so they stay sharp.
+export const heroPhotos = [
+  { src: "/brand/skyscrapers.jpg", alt: "Insurance", zoom: 1.0, pos: "50% 50%" },
+  { src: "/brand/skyscrapers.jpg", alt: "Retirement", zoom: 1.3, pos: "15% 70%" },
+  { src: "/brand/skyscrapers.jpg", alt: "Legal", zoom: 1.4, pos: "85% 25%" },
+  { src: "/brand/skyscrapers.jpg", alt: "Tax", zoom: 1.3, pos: "50% 90%" },
+  { src: "/brand/skyscrapers.jpg", alt: "Engineering", zoom: 1.5, pos: "30% 20%" },
+];
