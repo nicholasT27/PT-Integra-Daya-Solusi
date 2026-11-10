@@ -6,22 +6,17 @@ import { company, mapUrl, faqs } from "@/lib/site";
 
 export const metadata = { title: "Contact Us" };
 
-// The Contact page: a message form, the office address and phones, a map and common questions.
+// The Contact page: the message form, then the office address, phones and map, then common questions.
 export default function Contact() {
   return (
     <>
       <PageHeader eyebrow="Contact us" title="We would like to" accent="hear from you." text="Send a message or call our office in South Jakarta." />
       <Section>
-        <Container className="grid gap-8 lg:grid-cols-5">
-          <Reveal className="lg:col-span-3">
-            <Glass className="p-8 sm:p-10">
-              <h2 className="text-2xl font-bold text-navy-900">Send us a message</h2>
-              <div className="mt-6"><ContactForm /></div>
-            </Glass>
-          </Reveal>
-          <div className="space-y-5 lg:col-span-2">
-            <Reveal delay={100}>
-              <Glass className="p-7">
+        <Container className="max-w-4xl">
+          <ContactForm />
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <Reveal>
+              <Glass className="h-full p-7">
                 <h2 className="flex items-center gap-3 text-lg font-bold text-navy-900"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-600 text-white"><Icon name="pin" className="h-5 w-5" /></span>Office</h2>
                 <address className="mt-4 text-sm not-italic leading-relaxed text-muted">
                   <strong className="text-navy-900">{company.name}</strong>
@@ -29,16 +24,16 @@ export default function Contact() {
                 </address>
               </Glass>
             </Reveal>
-            <Reveal delay={180}>
-              <Glass className="p-7">
+            <Reveal delay={100}>
+              <Glass className="h-full p-7">
                 <h2 className="flex items-center gap-3 text-lg font-bold text-navy-900"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-600 text-white"><Icon name="phone" className="h-5 w-5" /></span>Phone</h2>
                 <p className="mt-4 text-sm">{company.phones.map((p) => <a key={p.href} href={p.href} className="block font-semibold text-navy-600 hover:underline">{p.label}</a>)}</p>
               </Glass>
             </Reveal>
-            <Reveal delay={260}>
-              <iframe title="Map showing our office in Tebet, Jakarta Selatan" src={mapUrl} loading="lazy" className="h-64 w-full rounded-3xl border-0 shadow-lg" />
-            </Reveal>
           </div>
+          <Reveal className="mt-5">
+            <iframe title="Map showing our office in Tebet, Jakarta Selatan" src={mapUrl} loading="lazy" className="h-72 w-full rounded-3xl border-0 shadow-lg" />
+          </Reveal>
         </Container>
       </Section>
       <Section tone="ice">
