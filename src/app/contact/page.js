@@ -45,7 +45,10 @@ export default function Contact() {
                 <details key={f.q} className="group p-6">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-navy-900">
                     {f.q}
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-navy-900/15 text-lg text-navy-600 transition-transform duration-300 group-open:rotate-45">+</span>
+                    <span className="relative h-9 w-9 shrink-0 rounded-full border border-navy-900/15 text-navy-600 transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                      <span className="absolute left-1/2 top-1/2 h-[2px] w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-current" />
+                      <span className="absolute left-1/2 top-1/2 h-3.5 w-[2px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-current" />
+                    </span>
                   </summary>
                   <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
                 </details>
