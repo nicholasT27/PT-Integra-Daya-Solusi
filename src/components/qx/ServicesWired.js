@@ -35,7 +35,7 @@ function ServiceCard({ s, i, a, hover, side }) {
   const on = a === i;
   return (
     <div className="py-2 lg:h-full">
-      <Link href={`/services/${s.slug}`} onMouseEnter={() => hover(i)} onFocus={() => hover(i)} className={`group relative block h-full rounded-3xl border p-5 transition-all duration-300 ${on ? "border-navy-600 bg-white shadow-2xl" : "border-white bg-white/65 shadow-md backdrop-blur-xl hover:bg-white"}`}>
+      <Link href={`/services/${s.slug}`} onMouseEnter={() => hover(i)} onFocus={() => hover(i)} className={`group relative block h-full rounded-3xl border p-5 transition-all duration-300 ${on ? "border-navy-600 bg-white shadow-2xl" : "border-white bg-white/75 shadow-md backdrop-blur-xl hover:bg-white"}`}>
         <span className={`absolute top-1/2 hidden h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-white transition-all duration-300 lg:block ${side === "left" ? "-right-[7px]" : "-left-[7px]"} ${on ? "scale-125 bg-navy-600 shadow-[0_0_0_5px_rgba(0,58,242,0.2)]" : "bg-navy-600/40"}`} />
         <span className="flex items-center justify-between">
           <span className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-300 ${on ? "bg-navy-600 text-white" : "bg-ice-100 text-navy-600"}`}><Icon name={s.icon} /></span>
@@ -63,7 +63,9 @@ export default function ServicesWired() {
           <h2 className="mx-auto mt-6 max-w-3xl text-balance text-4xl font-bold leading-[1.05] text-navy-900 sm:text-6xl">Every angle, <span className="shine-text">wired together.</span></h2>
         </div>
 
-        <div className="mt-14 grid gap-0 lg:auto-rows-fr lg:grid-cols-[1fr_580px_1fr]">
+        {/* One frosted-glass panel behind the whole diagram, so the moving page background is softened and the cards stay easy to read */}
+        <div className="mt-14 rounded-[2.5rem] border border-white bg-white/55 p-4 shadow-xl backdrop-blur-2xl sm:p-8">
+        <div className="grid gap-0 lg:auto-rows-fr lg:grid-cols-[1fr_540px_1fr]">
           <div className="mb-6 flex justify-center lg:hidden">
             <span className="flex h-28 w-28 items-center justify-center rounded-full bg-white shadow-2xl ring-1 ring-navy-600/10"><Image src="/brand/ids-mark-blue.svg" alt="IDS" width={160} height={54} className="w-[64%]" /></span>
           </div>
@@ -101,6 +103,7 @@ export default function ServicesWired() {
           </div>
 
           {services.slice(3).map((s, i) => <div key={s.slug} className={rightRows[i]}><ServiceCard s={s} i={i + 3} a={h.a} hover={h.hover} side="right" /></div>)}
+        </div>
         </div>
 
         <div className="mt-14 flex justify-center">
