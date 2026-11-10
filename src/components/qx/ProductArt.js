@@ -1,5 +1,8 @@
-// A drawn illustration for each product, in the brand blues. Used until real photos are available.
-// "kind" is "factory", "transport" or "building". They are simple vector shapes, so they stay sharp at any size.
+import Image from "next/image";
+import { products } from "@/lib/site";
+
+// The picture for a product. It shows the product's photo, or, if it has none, a drawn illustration in the brand blues.
+// "kind" is "factory", "transport" or "building".
 const B = "#003af2", N = "#002070", S = "#a9bfff", I = "#e5ecff", W = "#ffffff";
 
 function Factory() {
@@ -63,7 +66,15 @@ function Building() {
 
 const scenes = { factory: Factory, transport: Transport, building: Building };
 
-export default function ProductArt({ kind, className = "" }) {
+export default function ProductArt({ kind, className = "", sizes = "560px" }) {
+  const photo = products.find((p) => p.art === kind)?.photo;
+  if (photo) {
+    return (
+      <span className={`relative block aspect-[4/3] overflow-hidden rounded-2xl ${className}`}>
+        <Image src={photo.src} alt={photo.alt} fill unoptimized sizes={sizes} className="object-cover" />
+      </span>
+    );
+  }
   const Scene = scenes[kind] ?? Factory;
   return (
     <svg viewBox="0 0 400 300" role="img" aria-label={`Illustration: ${kind}`} className={className} preserveAspectRatio="xMidYMid meet">

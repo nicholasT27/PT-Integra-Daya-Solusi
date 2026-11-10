@@ -273,11 +273,12 @@ export const servicePhotos = {
   "industrial-management-consultant": { src: "/photos/engineering.jpg", pos: "58% 50%", zoom: 1 },
 };
 
-// The products page. IDS is newly established and has no photos yet, so each product is shown with a drawn illustration
-// ("art" names which one). ALL WORDING BELOW IS SAMPLE TEXT for the client demo: replace it with the real product details.
+// The products page. Each product has a photo in public/photos (AI-generated pictures, to be replaced by real project photos
+// when available). "art" names a drawn illustration that is used only if a product has no photo. ALL WORDING BELOW IS SAMPLE TEXT for the client demo: replace it with the real product details.
 export const products = [
   {
     slug: "factory",
+    photo: { src: "/photos/factory.jpg", alt: "Two engineers in safety helmets and high-visibility vests reviewing a tablet in front of an industrial plant" },
     art: "factory",
     title: "Factory and Industrial Plant",
     short: "Engineering and risk solutions for factories, plants and production lines.",
@@ -287,6 +288,7 @@ export const products = [
   },
   {
     slug: "transportation",
+    photo: { src: "/photos/transportation.jpg", alt: "Two logistics staff in safety helmets checking cargo in a container yard with a truck and stacked containers" },
     art: "transport",
     title: "Transportation and Logistics",
     short: "Risk, engineering and insurance support for fleets, cargo and transport facilities.",
@@ -296,6 +298,7 @@ export const products = [
   },
   {
     slug: "building",
+    photo: { src: "/photos/building.jpg", alt: "Two engineers in safety helmets holding plans and looking up at a modern glass office tower" },
     art: "building",
     title: "Building and Construction",
     short: "Engineering and risk services for offices, commercial buildings and construction projects.",

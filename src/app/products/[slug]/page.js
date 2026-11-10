@@ -53,7 +53,7 @@ export default async function ProductPage({ params }) {
             </Reveal>
           </div>
           <aside className="space-y-5 lg:col-span-4">
-            <Reveal delay={100}><Glass className="p-6"><ProductArt kind={product.art} className="h-auto w-full" /></Glass></Reveal>
+            <Reveal delay={100}><ProductArt kind={product.art} sizes="420px" className="w-full rounded-3xl shadow-xl ring-4 ring-white" /></Reveal>
             <Reveal delay={180}>
               <Glass className="p-7">
                 <h3 className="text-lg font-bold text-navy-900">Other products</h3>
