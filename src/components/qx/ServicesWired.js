@@ -34,7 +34,7 @@ function route(i) {
 function ServiceCard({ s, i, a, hover, side }) {
   const on = a === i;
   return (
-    <div className="py-2 lg:h-full">
+    <div className="relative z-10 py-2 lg:h-full">
       <Link href={`/services/${s.slug}`} onMouseEnter={() => hover(i)} onFocus={() => hover(i)} className={`group relative block h-full rounded-3xl border p-5 transition-all duration-300 ${on ? "border-navy-600 bg-white shadow-2xl" : "border-white bg-white/75 shadow-md backdrop-blur-xl hover:bg-white"}`}>
         <span className={`absolute top-1/2 hidden h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-white transition-all duration-300 lg:block ${side === "left" ? "-right-[7px]" : "-left-[7px]"} ${on ? "scale-125 bg-navy-600 shadow-[0_0_0_5px_rgba(0,58,242,0.2)]" : "bg-navy-600/40"}`} />
         <span className="flex items-center justify-between">
