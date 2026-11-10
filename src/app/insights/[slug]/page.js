@@ -39,7 +39,7 @@ export default async function Post({ params }) {
               <div className="space-y-5 text-lg leading-relaxed text-navy-900/85">
                 {post.body.map((para) => <p key={para}>{para}</p>)}
               </div>
-              <Link href="/insights" className="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600"><Arrow flip /> Back to all insights</Link>
+              <Link href="/insights" className="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 transition-all hover:gap-3"><Arrow flip /> Back to all insights</Link>
             </Glass>
           </Reveal>
         </Container>

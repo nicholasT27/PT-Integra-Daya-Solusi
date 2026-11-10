@@ -26,7 +26,7 @@ export default function Insights() {
                 <h2 className="mt-6 text-3xl font-bold leading-tight sm:text-4xl">{first.title}</h2>
                 <p className="mt-4 max-w-md text-white/75">{first.summary}</p>
               </div>
-              <p className="mt-10 text-sm font-semibold text-sky-300">{formatDate(first.date)} · <span className="inline-flex items-center gap-2">Read article <Arrow /></span></p>
+              <p className="mt-10 text-sm font-semibold text-sky-300">{formatDate(first.date)} · <span className="inline-flex items-center gap-2">Read article <span className="transition-transform duration-300 group-hover:translate-x-2"><Arrow /></span></span></p>
             </Link>
           </Reveal>
           <div className="grid gap-5 lg:col-span-5">
@@ -39,7 +39,7 @@ export default function Insights() {
                       <h3 className="mt-3 text-xl font-bold leading-snug text-navy-900">{p.title}</h3>
                       <p className="mt-2 text-sm text-muted">{p.summary}</p>
                     </div>
-                    <p className="mt-5 text-xs text-muted">{formatDate(p.date)} · <span className="font-semibold text-navy-600"><span className="inline-flex items-center gap-1.5">Read <Arrow className="h-3 w-3" /></span></span></p>
+                    <p className="mt-5 text-xs text-muted">{formatDate(p.date)} · <span className="font-semibold text-navy-600"><span className="inline-flex items-center gap-1.5">Read <span className="transition-transform duration-300 group-hover:translate-x-1.5"><Arrow className="h-3 w-3" /></span></span></span></p>
                   </Glass>
                 </Link>
               </Reveal>

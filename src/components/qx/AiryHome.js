@@ -66,7 +66,7 @@ export default function AiryHome() {
                     <h3 className="mt-6 text-2xl font-bold leading-snug">{p.title}</h3>
                     <p className={`mt-3 text-sm ${i === 0 ? "text-white/75" : "text-muted"}`}>{p.summary}</p>
                   </div>
-                  <p className={`mt-10 text-sm font-semibold ${i === 0 ? "text-sky-300" : "text-navy-600"}`}><span className="inline-flex items-center gap-2">Read article <Arrow /></span></p>
+                  <p className={`mt-10 text-sm font-semibold ${i === 0 ? "text-sky-300" : "text-navy-600"}`}><span className="inline-flex items-center gap-2">Read article <span className="transition-transform duration-300 group-hover:translate-x-2"><Arrow /></span></span></p>
                 </Link>
               </Reveal>
             ))}

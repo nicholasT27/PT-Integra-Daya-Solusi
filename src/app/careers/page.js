@@ -26,7 +26,7 @@ export default function Careers() {
                     </div>
                     <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">{j.text}</p>
                   </div>
-                  <Link href="/contact" className="inline-flex shrink-0 items-center gap-2 rounded-full border border-navy-600 px-6 py-3 text-sm font-semibold text-navy-600 transition-colors duration-300 hover:bg-navy-600 hover:text-white">Apply <Arrow /></Link>
+                  <Link href="/contact" className="inline-flex shrink-0 items-center gap-2 rounded-full border border-navy-600 px-6 py-3 text-sm font-semibold text-navy-600 transition-colors duration-300 hover:bg-navy-600 hover:text-white">Apply <span className="transition-transform duration-300 group-hover:translate-x-1"><Arrow /></span></Link>
                 </Glass>
               </Reveal>
             ))}

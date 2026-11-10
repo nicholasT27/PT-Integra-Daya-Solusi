@@ -18,7 +18,18 @@ export function Arrow({ className = "h-3.5 w-3.5", flip = false }) {
   );
 }
 
-// A pill button with a single, fixed arrow in a round badge.
+// The round arrow badge of a pill button. On hover the arrow slides out to the right while a new one slides in from the
+// left. The waiting arrow is parked a full badge-width away, so none of it can show before the hover. The button must be a "group".
+export function SlideArrow() {
+  return (
+    <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-white/20">
+      <Arrow className="absolute h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-9" />
+      <Arrow className="absolute h-3.5 w-3.5 -translate-x-9 transition-transform duration-300 group-hover:translate-x-0" />
+    </span>
+  );
+}
+
+// A pill button with an arrow in a round badge that slides on hover.
 export function ArrowButton({ href, children, tone = "blue" }) {
   const styles = {
     blue: "bg-navy-600 text-white hover:bg-navy-700",
@@ -26,9 +37,9 @@ export function ArrowButton({ href, children, tone = "blue" }) {
     outline: "border border-current",
   }[tone];
   return (
-    <Link href={href} className={`inline-flex items-center gap-3 rounded-full py-2 pl-6 pr-2 text-sm font-semibold transition-colors ${styles}`}>
+    <Link href={href} className={`group inline-flex items-center gap-3 rounded-full py-2 pl-6 pr-2 text-sm font-semibold transition-colors ${styles}`}>
       {children}
-      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20"><Arrow /></span>
+      <SlideArrow />
     </Link>
   );
 }
