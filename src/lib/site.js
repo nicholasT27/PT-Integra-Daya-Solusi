@@ -252,13 +252,12 @@ export const employeeStories = [
 ];
 
 // The five pictures shown beside the home page headline, one for each word (insurance, retirement, legal, tax, engineering).
-// For now every entry uses the brand photo, cropped differently, as a stand-in. To use real photos, put the files in
-// public/photos/ and change each "src" (for example "/photos/insurance.jpg"), then set zoom to 1 and pos to "50% 50%".
-// Photos should be at least 900 px wide and roughly square or 4:5, so they stay sharp.
+// The files are in public/photos/. "pos" chooses which part of the photo stays in view inside the arch.
+// To swap a photo, replace the file (keep the name) or change its "src". Use pictures at least 900 px wide.
 export const heroPhotos = [
-  { src: "/brand/skyscrapers.jpg", alt: "Insurance", zoom: 1.0, pos: "50% 50%" },
-  { src: "/brand/skyscrapers.jpg", alt: "Retirement", zoom: 1.3, pos: "15% 70%" },
-  { src: "/brand/skyscrapers.jpg", alt: "Legal", zoom: 1.4, pos: "85% 25%" },
-  { src: "/brand/skyscrapers.jpg", alt: "Tax", zoom: 1.3, pos: "50% 90%" },
-  { src: "/brand/skyscrapers.jpg", alt: "Engineering", zoom: 1.5, pos: "30% 20%" },
+  { src: "/photos/insurance.jpg", alt: "A building inspector in a hard hat looking up at a glass office tower", zoom: 1, pos: "30% 50%" },
+  { src: "/photos/retirement.jpg", alt: "A smiling older couple reading a document together at home", zoom: 1, pos: "72% 40%" },
+  { src: "/photos/legal.jpg", alt: "A hand signing a contract beside the scales of justice", zoom: 1, pos: "50% 62%" },
+  { src: "/photos/tax.jpg", alt: "A calculator, charts and a laptop on a tidy desk", zoom: 1, pos: "50% 70%" },
+  { src: "/photos/engineering.jpg", alt: "Two engineers in safety helmets reviewing plans at an industrial plant", zoom: 1, pos: "58% 50%" },
 ];
