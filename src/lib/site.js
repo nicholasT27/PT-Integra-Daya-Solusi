@@ -189,6 +189,7 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services", children: true },
+  { href: "/products", label: "Products" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
@@ -271,3 +272,35 @@ export const servicePhotos = {
   "accounting-and-tax-consultant": { src: "/photos/tax.jpg", pos: "50% 70%", zoom: 1 },
   "industrial-management-consultant": { src: "/photos/engineering.jpg", pos: "58% 50%", zoom: 1 },
 };
+
+// The products page. IDS is newly established and has no photos yet, so each product is shown with a drawn illustration
+// ("art" names which one). ALL WORDING BELOW IS SAMPLE TEXT for the client demo: replace it with the real product details.
+export const products = [
+  {
+    slug: "factory",
+    art: "factory",
+    title: "Factory and Industrial Plant",
+    short: "Engineering and risk solutions for factories, plants and production lines.",
+    intro: "From the first drawing to daily operation, we help industrial sites stay safe, productive and properly protected.",
+    covers: ["Plant layout, process and equipment review", "Fire, explosion and machinery risk assessment", "Occupational health and safety systems", "Maintenance and reliability planning", "Insurance programme for plant, stock and business interruption"],
+    steps: ["Site visit and information gathering", "Engineering and risk assessment", "Clear report with priorities", "Support to carry out the improvements"],
+  },
+  {
+    slug: "transportation",
+    art: "transport",
+    title: "Transportation and Logistics",
+    short: "Risk, engineering and insurance support for fleets, cargo and transport facilities.",
+    intro: "We look at vehicles, routes, depots and cargo as one system, so the whole chain from loading to delivery is covered.",
+    covers: ["Fleet and vehicle risk review", "Warehouse, depot and terminal assessment", "Cargo handling and loss-prevention advice", "Safety procedures and driver programmes", "Cargo, fleet and liability insurance placement"],
+    steps: ["Review of routes, fleet and facilities", "Risk and loss history analysis", "Recommendations and cover design", "Ongoing review as operations change"],
+  },
+  {
+    slug: "building",
+    art: "building",
+    title: "Building and Construction",
+    short: "Engineering and risk services for offices, commercial buildings and construction projects.",
+    intro: "We support owners, developers and managers through design, construction and operation, with a focus on safety and long-term value.",
+    covers: ["Building and fire-protection risk survey", "Construction project risk review", "Structural and building services observations", "Property valuation for sum insured", "Property and construction all-risk insurance"],
+    steps: ["Inspection of the building or project site", "Findings graded by risk level", "Practical improvement plan", "Support with insurers and contractors"],
+  },
+];

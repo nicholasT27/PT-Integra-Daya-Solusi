@@ -73,7 +73,7 @@ export default function QxHeader() {
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${barStyle}`}>
       <div className="relative z-50 mx-auto flex w-full max-w-6xl items-center justify-between px-5 sm:px-8">
         <Link href="/" onClick={() => setOpen(false)} aria-label="Home"><Logo light={open} /></Link>
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-8 whitespace-nowrap min-[1100px]:flex" aria-label="Main">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className={`group relative py-1 text-sm font-semibold transition-colors ${isCurrent(l.href, path) ? "text-navy-600" : "text-navy-900 hover:text-navy-600"}`}>
               {l.label}
@@ -82,7 +82,7 @@ export default function QxHeader() {
           ))}
           <ContactButton />
         </nav>
-        <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"} className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors lg:hidden ${open ? "bg-white text-navy-900" : "bg-navy-900 text-white hover:bg-navy-700"}`}>
+        <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"} className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors min-[1100px]:hidden ${open ? "bg-white text-navy-900" : "bg-navy-900 text-white hover:bg-navy-700"}`}>
           {open ? "Close" : "Menu"}
         </button>
       </div>

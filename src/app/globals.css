@@ -156,3 +156,12 @@ h1, h2, h3 {
 /* A progress bar that fills over seven seconds, used to show when the next testimonial arrives. */
 @keyframes grow7 { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
+
+/* Small continuous motions used inside the product illustrations. */
+@keyframes qxTick { to { transform: rotate(360deg); } }
+@keyframes qxTilt2 { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes qxRise { 0%, 100% { transform: scaleY(0.9) translateY(2px); opacity: 0.6; } 50% { transform: scaleY(1) translateY(-6px); opacity: 1; } }
+.ill-spin { animation: qxTick 14s linear infinite; }
+.ill-tilt { animation: qxTilt2 4.5s ease-in-out infinite; }
+.ill-rise { animation: qxRise 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+@media (prefers-reduced-motion: reduce) { .ill-spin, .ill-tilt, .ill-rise { animation: none; } }
