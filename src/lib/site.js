@@ -255,18 +255,17 @@ export const employeeStories = [
 // The files are in public/photos/. "pos" chooses which part of the photo stays in view inside the arch.
 // To swap a photo, replace the file (keep the name) or change its "src". Use pictures at least 900 px wide.
 export const heroPhotos = [
-  { src: "/photos/insurance.jpg", alt: "A building inspector in a hard hat looking up at a glass office tower", zoom: 1, pos: "30% 50%" },
+  { src: "/photos/insurance-agent.jpg", alt: "A smiling insurance adviser explaining cover to a client", zoom: 1, pos: "62% 40%" },
   { src: "/photos/retirement.jpg", alt: "A smiling older couple reading a document together at home", zoom: 1, pos: "72% 40%" },
   { src: "/photos/legal.jpg", alt: "A hand signing a contract beside the scales of justice", zoom: 1, pos: "50% 62%" },
   { src: "/photos/tax.jpg", alt: "A calculator, charts and a laptop on a tidy desk", zoom: 1, pos: "50% 70%" },
   { src: "/photos/engineering.jpg", alt: "Two engineers in safety helmets reviewing plans at an industrial plant", zoom: 1, pos: "58% 50%" },
 ];
 
-// Which photo goes with each service on the Services page. There are five photos for six services, so the two
-// insurance services share the building photo with different crops. Add a sixth photo for the insurance agent later.
+// Which photo goes with each service on the Services page. Each of the six services has its own photo.
 export const servicePhotos = {
   "insurance-risk-assessor": { src: "/photos/insurance.jpg", pos: "30% 50%", zoom: 1 },
-  "insurance-agent": { src: "/photos/insurance.jpg", pos: "100% 8%", zoom: 1.8 },
+  "insurance-agent": { src: "/photos/insurance-agent.jpg", pos: "60% 30%", zoom: 1 },
   "retirement-fund-consultant": { src: "/photos/retirement.jpg", pos: "72% 40%", zoom: 1 },
   "law-consultant": { src: "/photos/legal.jpg", pos: "50% 62%", zoom: 1 },
   "accounting-and-tax-consultant": { src: "/photos/tax.jpg", pos: "50% 70%", zoom: 1 },
