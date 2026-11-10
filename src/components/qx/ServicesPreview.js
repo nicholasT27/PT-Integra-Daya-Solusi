@@ -14,8 +14,8 @@ export default function ServicesPreview() {
       <PageHeader eyebrow="Services and solutions" title="Six specialist services," accent="working together." text="Use one service on its own or combine several for a joined-up approach." />
       <Design key={v} />
       <CallToAction />
-      <div className="fixed bottom-5 left-1/2 z-[60] flex max-w-[94vw] -translate-x-1/2 items-center gap-1 overflow-x-auto rounded-full bg-navy-900 px-3 py-2 text-white shadow-2xl">
-        {options.map(([n], i) => <button key={n} type="button" onClick={() => setV(i)} aria-pressed={v === i} className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${v === i ? "bg-white text-navy-900" : "hover:bg-white/15"}`}>{i + 1} · {n}</button>)}
+      <div className="fixed inset-x-3 bottom-4 z-[60] mx-auto flex w-fit max-w-[calc(100vw-1.5rem)] flex-wrap items-center justify-center gap-1 rounded-3xl bg-navy-900 p-2 text-white shadow-2xl">
+        {options.map(([n], i) => <button key={n} type="button" onClick={() => setV(i)} aria-pressed={v === i} className={`whitespace-nowrap rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${v === i ? "bg-white text-navy-900" : "hover:bg-white/15"}`}>{i + 1} · {n}</button>)}
       </div>
     </>
   );
