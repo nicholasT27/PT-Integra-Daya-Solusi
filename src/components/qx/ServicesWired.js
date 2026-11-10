@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Icon from "@/components/Icon";
-import { DetailTab } from "@/components/quinn/Bits";
+import { DetailTab, Arrow } from "@/components/quinn/Bits";
 import { Reveal } from "@/components/quinn/Interactive";
 import { services } from "@/lib/site";
 
@@ -107,7 +107,7 @@ export default function ServicesWired() {
           <Link href={`/services/${services[h.a].slug}`} className="group relative inline-flex items-center gap-4 overflow-hidden rounded-full bg-navy-600 py-2.5 pl-8 pr-2.5 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-700 hover:shadow-2xl">
             <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-white/25 transition-transform duration-700 group-hover:translate-x-[450%]" aria-hidden="true" />
             <span className="relative">Learn more</span>
-            <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-white/20"><Arrow className="h-4 w-4" /></span>
           </Link>
         </div>
       </div>

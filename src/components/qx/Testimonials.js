@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DetailTab } from "@/components/quinn/Bits";
+import { DetailTab, Arrow } from "@/components/quinn/Bits";
 import { Reveal } from "@/components/quinn/Interactive";
 import { testimonials } from "@/lib/site";
 
@@ -65,8 +65,8 @@ export default function Testimonials() {
                 <p className="animate-rise mt-8 text-sm text-white/70" style={{ animationDelay: "450ms" }}><strong className="text-white">{t.name}</strong>, {t.company}</p>
               </div>
               <div className="relative mt-8 flex items-center gap-4">
-                <button type="button" onClick={() => setA((a - 1 + n) % n)} aria-label="Previous testimonial" className="h-11 w-11 rounded-full border border-white/30 transition-colors hover:bg-white/10">←</button>
-                <button type="button" onClick={() => setA((a + 1) % n)} aria-label="Next testimonial" className="h-11 w-11 rounded-full border border-white/30 transition-colors hover:bg-white/10">→</button>
+                <button type="button" onClick={() => setA((a - 1 + n) % n)} aria-label="Previous testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 transition-colors hover:bg-white/10"><Arrow flip /></button>
+                <button type="button" onClick={() => setA((a + 1) % n)} aria-label="Next testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 transition-colors hover:bg-white/10"><Arrow /></button>
                 <div className="ml-2 flex gap-2" aria-hidden="true">{testimonials.map((_, i) => <span key={i} className={`h-1.5 rounded-full bg-sky-300 transition-all duration-500 ${a === i ? "w-12" : "w-3 opacity-30"}`} />)}</div>
                 <span className="ml-auto text-sm font-semibold tabular-nums text-sky-300">0{a + 1} / 0{n}</span>
               </div>

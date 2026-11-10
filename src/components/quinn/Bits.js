@@ -9,7 +9,16 @@ export function DetailTab({ children, className = "" }) {
   );
 }
 
-// A pill button with an arrow that slides across when you hover over it.
+// One plain arrow icon, used inside every button. It never moves or changes. "flip" points it left.
+export function Arrow({ className = "h-3.5 w-3.5", flip = false }) {
+  return (
+    <svg viewBox="0 0 17 10" className={`${className} ${flip ? "-scale-x-100" : ""}`} fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M1 5h14M11 1l4 4-4 4" />
+    </svg>
+  );
+}
+
+// A pill button with a single, fixed arrow in a round badge.
 export function ArrowButton({ href, children, tone = "blue" }) {
   const styles = {
     blue: "bg-navy-600 text-white hover:bg-navy-700",
@@ -17,23 +26,9 @@ export function ArrowButton({ href, children, tone = "blue" }) {
     outline: "border border-current",
   }[tone];
   return (
-    <Link href={href} className={`group inline-flex items-center gap-3 rounded-full py-2 pl-6 pr-2 text-sm font-semibold transition-colors ${styles}`}>
+    <Link href={href} className={`inline-flex items-center gap-3 rounded-full py-2 pl-6 pr-2 text-sm font-semibold transition-colors ${styles}`}>
       {children}
-      <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-white/20">
-        {[0, 1].map((n) => (
-          <svg
-            key={n}
-            viewBox="0 0 17 10"
-            className={`absolute h-2.5 w-4 transition-transform duration-300 ${n === 0 ? "group-hover:translate-x-6" : "-translate-x-6 group-hover:translate-x-0"}`}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            aria-hidden="true"
-          >
-            <path d="M1 5h14M11 1l4 4-4 4" />
-          </svg>
-        ))}
-      </span>
+      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20"><Arrow /></span>
     </Link>
   );
 }

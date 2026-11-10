@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
+import { Arrow } from "@/components/quinn/Bits";
 import { company, navLinks } from "@/lib/site";
 
 // The pages shown as links in the bar. Contact has its own button.
@@ -15,8 +16,8 @@ const isCurrent = (href, path) => (href === "/" ? path === "/" : path.startsWith
 // The solid "Contact us" button: always clearly a button, in the brand blue.
 function ContactButton() {
   return (
-    <Link href="/contact" className="group inline-flex items-center gap-2 rounded-full bg-navy-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-navy-600/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-700">
-      Contact us <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+    <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-navy-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-navy-600/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-700">
+      Contact us <Arrow />
     </Link>
   );
 }

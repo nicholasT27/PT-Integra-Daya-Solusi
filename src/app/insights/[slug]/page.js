@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHeader, Container, Section, Glass, CallToAction } from "@/components/Ui";
 import { Reveal } from "@/components/quinn/Interactive";
+import { Arrow } from "@/components/quinn/Bits";
 import { posts } from "@/lib/site";
 
 // Tells Next.js to build one page for each article.
@@ -38,7 +39,7 @@ export default async function Post({ params }) {
               <div className="space-y-5 text-lg leading-relaxed text-navy-900/85">
                 {post.body.map((para) => <p key={para}>{para}</p>)}
               </div>
-              <Link href="/insights" className="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 transition-all hover:gap-3">← Back to all insights</Link>
+              <Link href="/insights" className="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600"><Arrow flip /> Back to all insights</Link>
             </Glass>
           </Reveal>
         </Container>
