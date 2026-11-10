@@ -106,7 +106,7 @@ export default function HeroMain() {
       style={{ "--mx": 0, "--my": 0 }}
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 pb-24 pt-36 sm:px-8 lg:grid-cols-12">
-        <div className="max-lg:-mx-2 max-lg:rounded-[2rem] max-lg:bg-white/60 max-lg:p-6 max-lg:shadow-lg max-lg:ring-1 max-lg:ring-white max-lg:backdrop-blur-md lg:col-span-7">
+        <div className="lg:col-span-7">
         <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-navy-600">
           <span className="h-2 w-2 animate-pulse rounded-full bg-navy-600" /> PT Integra Daya Solusi
         </p>
@@ -131,7 +131,7 @@ export default function HeroMain() {
           ))}
         </div>
 
-        <p className="mt-7 max-w-xl text-lg leading-relaxed text-navy-900/80">
+        <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
           A Jakarta consultancy of insurance, risk, legal, finance and engineering specialists, simplifying complexity so you can focus on what matters most.
         </p>
         <div className="mt-9 flex flex-wrap gap-4">
