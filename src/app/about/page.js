@@ -90,7 +90,7 @@ export default function About() {
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-14"><p className="text-muted">Company announcements and articles from our team are shared on our <Link href="/insights" className="font-semibold text-navy-600 underline">Insights page</Link>.</p></Reveal>
+          <Reveal className="mt-14"><p className="text-muted">Company announcements and articles from our team are shared on our <Link href="/blog" className="font-semibold text-navy-600 underline">Blog</Link>.</p></Reveal>
         </Container>
       </Section>
 

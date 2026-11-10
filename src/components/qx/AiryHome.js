@@ -47,20 +47,20 @@ export default function AiryHome() {
       {/* Testimonials: voices list, quote stage and a strip of quote cards */}
       <Testimonials />
 
-      {/* Insights */}
+      {/* Blog */}
       <section className="py-28" data-tone="#f1f5ff" data-glow="0.9">
         <div className={wrap}>
           <div className="grid gap-8 lg:grid-cols-10">
-            <Reveal className="lg:col-span-6"><h2 className="text-4xl font-bold text-navy-900 sm:text-6xl">Insights</h2></Reveal>
+            <Reveal className="lg:col-span-6"><h2 className="text-4xl font-bold text-navy-900 sm:text-6xl">Blog</h2></Reveal>
             <Reveal className="space-y-6 lg:col-span-4" delay={120}>
               <p className="indent-10 text-muted">Relevant, ready-to-apply guidance on the issues shaping risk, insurance and business.</p>
-              <ArrowButton href="/insights">Go to insights</ArrowButton>
+              <ArrowButton href="/blog">Go to blog</ArrowButton>
             </Reveal>
           </div>
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {posts.map((p, i) => (
               <Reveal key={p.slug} delay={i * 120}>
-                <Link href={`/insights/${p.slug}`} className={`group flex h-full flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${i === 0 ? "bg-navy-900 text-white" : "bg-white text-navy-900"}`}>
+                <Link href={`/blog/${p.slug}`} className={`group flex h-full flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${i === 0 ? "bg-navy-900 text-white" : "bg-white text-navy-900"}`}>
                   <div>
                     <DetailTab className={i === 0 ? "text-sky-300" : "text-navy-600"}>{p.category}</DetailTab>
                     <h3 className="mt-6 text-2xl font-bold leading-snug">{p.title}</h3>

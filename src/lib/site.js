@@ -190,7 +190,7 @@ export const navLinks = [
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services", children: true },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/insights", label: "Insights" },
+  { href: "/blog", label: "Blog" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact Us" },
 ];
