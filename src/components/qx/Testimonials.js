@@ -40,7 +40,7 @@ export default function Testimonials() {
   return (
     <section className="relative py-28" data-tone="#eaf0ff" data-glow="1">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal><DetailTab className="text-navy-600">Testimonials</DetailTab></Reveal>
             <Reveal><h2 className="mt-6 text-5xl font-bold leading-[1.05] text-navy-900 sm:text-6xl">Voices <span className="shine-text">of clients.</span></h2></Reveal>
@@ -56,7 +56,7 @@ export default function Testimonials() {
           </div>
 
           <div className="lg:col-span-8">
-            <div className="relative flex min-h-[440px] flex-col justify-between overflow-hidden rounded-[2rem] bg-navy-900 p-8 text-white shadow-2xl sm:p-14">
+            <div className="relative flex min-h-[440px] flex-col justify-between overflow-hidden rounded-[2rem] bg-navy-900 p-6 text-white shadow-2xl sm:p-14">
               <span className="orbit-slow pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full border border-dashed border-white/20" />
               <span className="pointer-events-none absolute -bottom-32 -left-10 h-72 w-72 rounded-full bg-navy-600/40 blur-3xl" />
               <span className="relative text-8xl font-bold leading-none text-sky-300">&ldquo;</span>
@@ -64,7 +64,7 @@ export default function Testimonials() {
                 <WordQuote text={t.quote} className="text-3xl font-semibold leading-snug sm:text-4xl" />
                 <p className="animate-rise mt-8 text-sm text-white/70" style={{ animationDelay: "450ms" }}><strong className="text-white">{t.name}</strong>, {t.company}</p>
               </div>
-              <div className="relative mt-8 flex items-center gap-4">
+              <div className="relative mt-8 flex flex-wrap items-center gap-x-4 gap-y-3">
                 <button type="button" onClick={() => setA((a - 1 + n) % n)} aria-label="Previous testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 transition-colors hover:bg-white/10"><Arrow flip /></button>
                 <button type="button" onClick={() => setA((a + 1) % n)} aria-label="Next testimonial" className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 transition-colors hover:bg-white/10"><Arrow /></button>
                 <div className="ml-2 flex gap-2" aria-hidden="true">{testimonials.map((_, i) => <span key={i} className={`h-1.5 rounded-full bg-sky-300 transition-all duration-500 ${a === i ? "w-12" : "w-3 opacity-30"}`} />)}</div>

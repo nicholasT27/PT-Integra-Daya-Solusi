@@ -113,7 +113,7 @@ export default function HeroMain() {
 
         {/* The real headline sits on top of hidden copies using the widest words, so the space below never jumps. */}
         <div className="mt-6 grid">
-          <h1 aria-label="Risk, insurance and business advice, brought together." className="[grid-area:1/1] text-5xl font-bold leading-[1.1] text-navy-900 sm:text-6xl">
+          <h1 aria-label="Risk, insurance and business advice, brought together." className="[grid-area:1/1] text-5xl max-[359px]:text-[2.5rem] font-bold leading-[1.1] text-navy-900 sm:text-6xl">
             <span aria-hidden="true">
               {word("Risk,", 0)}
               {word(<WordSwap words={swapWords} i={cycle.i} anim={cycle.anim} />, 1)}
@@ -125,7 +125,7 @@ export default function HeroMain() {
             </span>
           </h1>
           {["retirement", "engineering"].map((w) => (
-            <p key={w} aria-hidden="true" className="invisible [grid-area:1/1] text-5xl font-bold leading-[1.1] text-navy-900 sm:text-6xl">
+            <p key={w} aria-hidden="true" className="invisible [grid-area:1/1] text-5xl max-[359px]:text-[2.5rem] font-bold leading-[1.1] text-navy-900 sm:text-6xl">
               Risk, {w} and business advice, brought together.
             </p>
           ))}

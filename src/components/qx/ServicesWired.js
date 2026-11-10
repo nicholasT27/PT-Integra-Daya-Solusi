@@ -34,9 +34,9 @@ function route(i) {
 function ServiceCard({ s, i, a, hover, side }) {
   const on = a === i;
   return (
-    <div className="relative z-10 py-2 lg:h-full">
+    <div className="relative z-10 py-2 xl:h-full">
       <Link href={`/services/${s.slug}`} onMouseEnter={() => hover(i)} onFocus={() => hover(i)} className={`group relative block h-full rounded-3xl border p-5 transition-all duration-300 ${on ? "border-navy-600 bg-white shadow-2xl" : "border-white bg-white/75 shadow-md backdrop-blur-xl hover:bg-white"}`}>
-        <span className={`absolute top-1/2 hidden h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-white transition-all duration-300 lg:block ${side === "left" ? "-right-[7px]" : "-left-[7px]"} ${on ? "scale-125 bg-navy-600 shadow-[0_0_0_5px_rgba(0,58,242,0.2)]" : "bg-navy-600/40"}`} />
+        <span className={`absolute top-1/2 hidden h-3.5 w-3.5 -translate-y-1/2 rounded-full border-2 border-white transition-all duration-300 xl:block ${side === "left" ? "-right-[7px]" : "-left-[7px]"} ${on ? "scale-125 bg-navy-600 shadow-[0_0_0_5px_rgba(0,58,242,0.2)]" : "bg-navy-600/40"}`} />
         <span className="flex items-center justify-between">
           <span className={`flex h-11 w-11 items-center justify-center rounded-xl transition-colors duration-300 ${on ? "bg-navy-600 text-white" : "bg-ice-100 text-navy-600"}`}><Icon name={s.icon} /></span>
           <span className="text-sm font-semibold text-navy-600/50">0{i + 1}</span>
@@ -52,11 +52,11 @@ function ServiceCard({ s, i, a, hover, side }) {
 // with one big "Learn more" button that goes to the highlighted service.
 export default function ServicesWired() {
   const h = useHighlight();
-  const leftRows = ["lg:col-start-1 lg:row-start-1", "lg:col-start-1 lg:row-start-2", "lg:col-start-1 lg:row-start-3"];
-  const rightRows = ["lg:col-start-3 lg:row-start-1", "lg:col-start-3 lg:row-start-2", "lg:col-start-3 lg:row-start-3"];
+  const leftRows = ["xl:col-start-1 xl:row-start-1", "xl:col-start-1 xl:row-start-2", "xl:col-start-1 xl:row-start-3"];
+  const rightRows = ["xl:col-start-3 xl:row-start-1", "xl:col-start-3 xl:row-start-2", "xl:col-start-3 xl:row-start-3"];
 
   return (
-    <section id="services" data-tone="#f1f5ff" data-glow="0.9">
+    <section id="services" data-tone="#f1f5ff" data-glow="0.9" className="overflow-x-clip">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-28 sm:px-8" onMouseLeave={h.resume}>
         <div className="text-center">
           <Reveal><DetailTab className="text-navy-600">What we offer.</DetailTab></Reveal>
@@ -65,14 +65,14 @@ export default function ServicesWired() {
 
         {/* One frosted-glass panel behind the whole diagram, so the moving page background is softened and the cards stay easy to read */}
         <div className="mt-14 rounded-[2.5rem] border border-white bg-white/55 p-4 shadow-xl backdrop-blur-2xl sm:p-8">
-        <div className="grid gap-0 lg:auto-rows-fr lg:grid-cols-[1fr_540px_1fr]">
-          <div className="mb-6 flex justify-center lg:hidden">
+        <div className="grid gap-x-4 md:grid-cols-2 xl:gap-x-0 xl:auto-rows-fr xl:grid-cols-[1fr_540px_1fr]">
+          <div className="mb-6 flex justify-center md:col-span-2 xl:hidden">
             <span className="flex h-28 w-28 items-center justify-center rounded-full bg-white shadow-2xl ring-1 ring-navy-600/10"><Image src="/brand/ids-mark-blue.svg" alt="IDS" width={160} height={54} className="w-[64%]" /></span>
           </div>
 
           {services.slice(0, 3).map((s, i) => <div key={s.slug} className={leftRows[i]}><ServiceCard s={s} i={i} a={h.a} hover={h.hover} side="left" /></div>)}
 
-          <div className="relative hidden lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:block">
+          <div className="relative hidden xl:col-start-2 xl:row-span-3 xl:row-start-1 xl:block">
             <span className="orbit-slow absolute left-1/2 top-1/2 aspect-square h-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-navy-600/25" />
             <span className="absolute left-1/2 top-1/2 aspect-square h-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-navy-600/10" />
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" fill="none" aria-hidden="true">

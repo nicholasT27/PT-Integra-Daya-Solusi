@@ -37,7 +37,7 @@ export function ArrowButton({ href, children, tone = "blue" }) {
     outline: "border border-current",
   }[tone];
   return (
-    <Link href={href} className={`group inline-flex items-center gap-3 rounded-full py-2 pl-6 pr-2 text-sm font-semibold transition-colors ${styles}`}>
+    <Link href={href} className={`group inline-flex shrink-0 items-center gap-3 whitespace-nowrap rounded-full py-2 pl-6 pr-2 text-sm font-semibold transition-colors ${styles}`}>
       {children}
       <SlideArrow />
     </Link>

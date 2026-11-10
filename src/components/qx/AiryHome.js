@@ -57,9 +57,9 @@ export default function AiryHome() {
               <ArrowButton href="/blog">Go to blog</ArrowButton>
             </Reveal>
           </div>
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 120}>
+              <Reveal key={p.slug} delay={i * 120} className={i === 0 ? "md:col-span-2 lg:col-span-1" : ""}>
                 <Link href={`/blog/${p.slug}`} className={`group flex h-full flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${i === 0 ? "bg-navy-900 text-white" : "bg-white text-navy-900"}`}>
                   <div>
                     <DetailTab className={i === 0 ? "text-sky-300" : "text-navy-600"}>{p.category}</DetailTab>
