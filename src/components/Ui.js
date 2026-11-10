@@ -34,7 +34,7 @@ export function PageHeader({ eyebrow, title, accent, text, children }) {
     <section data-tone="#ffffff" data-glow="1" className="pb-16 pt-40">
       <Container>
         {eyebrow && <Reveal><DetailTab className="text-navy-600">{eyebrow}</DetailTab></Reveal>}
-        <Reveal delay={60}><h1 className="mt-6 max-w-4xl text-balance text-5xl font-bold leading-[1.04] text-navy-900 sm:text-7xl">{title}{accent && <> <span className="shine-text">{accent}</span></>}</h1></Reveal>
+        <Reveal delay={60}><h1 className="mt-6 max-w-4xl text-balance text-5xl font-bold leading-[1.04] text-navy-900 max-[359px]:text-[2.2rem] sm:text-7xl">{title}{accent && <> <span className="shine-text">{accent}</span></>}</h1></Reveal>
         {text && <Reveal delay={140}><p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{text}</p></Reveal>}
         {children && <Reveal delay={220}><div className="mt-9">{children}</div></Reveal>}
       </Container>
