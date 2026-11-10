@@ -261,3 +261,14 @@ export const heroPhotos = [
   { src: "/photos/tax.jpg", alt: "A calculator, charts and a laptop on a tidy desk", zoom: 1, pos: "50% 70%" },
   { src: "/photos/engineering.jpg", alt: "Two engineers in safety helmets reviewing plans at an industrial plant", zoom: 1, pos: "58% 50%" },
 ];
+
+// Which photo goes with each service on the Services page. There are five photos for six services, so the two
+// insurance services share the building photo with different crops. Add a sixth photo for the insurance agent later.
+export const servicePhotos = {
+  "insurance-risk-assessor": { src: "/photos/insurance.jpg", pos: "30% 50%", zoom: 1 },
+  "insurance-agent": { src: "/photos/insurance.jpg", pos: "100% 8%", zoom: 1.8 },
+  "retirement-fund-consultant": { src: "/photos/retirement.jpg", pos: "72% 40%", zoom: 1 },
+  "law-consultant": { src: "/photos/legal.jpg", pos: "50% 62%", zoom: 1 },
+  "accounting-and-tax-consultant": { src: "/photos/tax.jpg", pos: "50% 70%", zoom: 1 },
+  "industrial-management-consultant": { src: "/photos/engineering.jpg", pos: "58% 50%", zoom: 1 },
+};
