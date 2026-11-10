@@ -90,7 +90,7 @@ export default function PageBackdrop() {
 
       {/* Flowing lines, and the same lines drawn strongly only near the cursor */}
       <FlowLines color="#003af2" opacity={0.35} />
-      <div className="absolute inset-0" style={{ maskImage: mask(300), WebkitMaskImage: mask(300) }}><FlowLines color="#002070" opacity={0.85} /></div>
+      <div className="absolute inset-0 [@media(hover:none)]:hidden" style={{ maskImage: mask(300), WebkitMaskImage: mask(300) }}><FlowLines color="#002070" opacity={0.85} /></div>
     </div>
   );
 }
